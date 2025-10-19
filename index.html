@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About - Astrodon Quartet</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Manrope', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="components/components.js"></script>
+</head>
+<body class="font-sans text-gray-800">
+    <main class="min-h-[calc(100vh-100px)]">
+        <!-- Hero Section with Quartet Image -->
+        <div class="flex flex-col lg:flex-row-reverse items-stretch">
+
+            <!-- Image Container - Full width on mobile, partial on desktop, extends to screen edge -->
+            <div class="w-full lg:w-3/5 flex-shrink-0">
+                <img
+                    src="images/_MG_6452c.jpeg"
+                    alt="Astrodon Quartet"
+                    class="w-full h-full object-cover"
+                >
+            </div>
+
+            <!-- About Content -->
+            <div class="flex-1 px-8 py-12 max-w-7xl">
+                <h1 class="text-4xl md:text-5xl font-semibold text-gray-900 mb-6">title</h1>
+                <p class="text-lg text-gray-600 leading-relaxed mb-4">
+                    The Astrodon Quartet brings together four exceptional musicians dedicated to performing the finest chamber music repertoire. With a passion for both traditional and contemporary works, we strive to create unforgettable musical experiences.
+                </p>
+                <p class="text-lg text-gray-600 leading-relaxed mb-6">
+                    Our performances blend technical excellence with emotional depth, offering audiences a unique journey through the rich landscape of string quartet literature.
+                </p>
+            </div>
+        </div>
+
+        <!-- Optional: Quick Links Section -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto px-8 py-12">
+            <a href="concerts.html" class="group p-8 bg-gray-50 rounded-lg border border-gray-200 hover:border-gray-300 hover:shadow-lg transition-all no-underline">
+                <h3 class="text-xl font-semibold text-gray-900 mb-3 group-hover:text-gray-600 transition-colors">Upcoming Concerts</h3>
+                <p class="text-gray-600">View our performance schedule and get tickets</p>
+            </a>
+
+            <a href="media.html" class="group p-8 bg-gray-50 rounded-lg border border-gray-200 hover:border-gray-300 hover:shadow-lg transition-all no-underline">
+                <h3 class="text-xl font-semibold text-gray-900 mb-3 group-hover:text-gray-600 transition-colors">Media Gallery</h3>
+                <p class="text-gray-600">Listen to recordings and watch performances</p>
+            </a>
+
+            <a href="contact.html" class="group p-8 bg-gray-50 rounded-lg border border-gray-200 hover:border-gray-300 hover:shadow-lg transition-all no-underline">
+                <h3 class="text-xl font-semibold text-gray-900 mb-3 group-hover:text-gray-600 transition-colors">Get in Touch</h3>
+                <p class="text-gray-600">Contact us for bookings and inquiries</p>
+            </a>
+        </div>
+    </main>
+</body>
+</html>

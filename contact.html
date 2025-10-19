@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact - Astrodon Quartet</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Manrope', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="components/components.js"></script>
+</head>
+<body class="font-sans text-gray-800">
+    <main class="max-w-7xl mx-auto px-8 py-12 min-h-[calc(100vh-100px)]">
+        <div class="max-w-2xl mx-auto">
+            <h1 class="text-4xl md:text-5xl font-semibold text-gray-900 mb-4 text-center">Get in Touch</h1>
+            <p class="text-lg text-gray-500 mb-12 text-center leading-relaxed">We'd love to hear from you. Send us a message and we'll respond as soon as possible.</p>
+
+            <form action="https://api.web3forms.com/submit" method="POST" class="flex flex-col gap-6">
+                <input type="hidden" name="access_key" value="cf456e02-9165-4d0b-b5b4-c55c5f5082fe">
+                <input type="hidden" name="subject" value="New Submission from Astrodon Quartet">
+                <input type="hidden" name="from_name" value="Astrodon Quartet Website">
+                <input type="checkbox" name="botcheck" style="display: none;">
+
+                <div class="flex flex-col gap-2">
+                    <label for="name" class="text-sm font-medium text-gray-800 uppercase tracking-wider">Name</label>
+                    <input type="text" id="name" name="name" placeholder="Your name" required class="px-4 py-3.5 font-sans text-base text-gray-800 bg-white border border-gray-200 rounded transition-all focus:outline-none focus:border-gray-400 focus:ring-4 focus:ring-gray-400/10">
+                </div>
+
+                <div class="flex flex-col gap-2">
+                    <label for="email" class="text-sm font-medium text-gray-800 uppercase tracking-wider">Email</label>
+                    <input type="email" id="email" name="email" placeholder="your@email.com" required class="px-4 py-3.5 font-sans text-base text-gray-800 bg-white border border-gray-200 rounded transition-all focus:outline-none focus:border-gray-400 focus:ring-4 focus:ring-gray-400/10">
+                </div>
+
+                <div class="flex flex-col gap-2">
+                    <label for="message" class="text-sm font-medium text-gray-800 uppercase tracking-wider">Message</label>
+                    <textarea id="message" name="message" rows="6" placeholder="Your message" required class="px-4 py-3.5 font-sans text-base text-gray-800 bg-white border border-gray-200 rounded resize-y min-h-[150px] transition-all focus:outline-none focus:border-gray-400 focus:ring-4 focus:ring-gray-400/10"></textarea>
+                </div>
+
+                <button type="submit" class="px-8 py-4 font-sans text-base font-medium text-white bg-gray-900 border-none rounded cursor-pointer transition-all hover:bg-gray-700 hover:-translate-y-0.5 active:translate-y-0 mt-4">Send Message</button>
+            </form>
+        </div>
+    </main>
+</body>
+</html>

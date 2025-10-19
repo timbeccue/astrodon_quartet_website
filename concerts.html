@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Concerts - Astrodon Quartet</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Manrope', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="components/components.js"></script>
+</head>
+<body class="font-sans text-gray-800">
+    <main class="max-w-7xl mx-auto px-8 py-12 min-h-[calc(100vh-100px)]">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-screen-2xl mx-auto">
+            <!-- Upcoming Concerts -->
+            <div class="flex flex-col min-h-0 order-2 md:order-1">
+                <button class="w-full py-1.5 md:py-3 cursor-pointer flex justify-between items-center border-b-2 border-gray-900 hover:border-gray-500 transition-colors mb-2 md:mb-6 group" id="upcoming-toggle" aria-expanded="true">
+                    <h2 class="text-lg md:text-2xl font-semibold text-gray-900 m-0 group-hover:text-gray-600 transition-colors">Upcoming Concerts</h2>
+                    <span class="text-lg md:text-xl font-light text-gray-500 leading-none">−</span>
+                </button>
+                <div class="flex-1 overflow-y-auto max-h-[calc(100vh-250px)] pr-2 transition-all duration-300" id="upcoming-concerts" style="scrollbar-width: thin; scrollbar-color: #ccc #f1f1f1;">
+                    <!-- Concerts will be loaded here -->
+                </div>
+            </div>
+
+            <!-- Past Concerts -->
+            <div class="flex flex-col min-h-0 order-1 md:order-2">
+                <button class="w-full py-1.5 md:py-3 cursor-pointer flex justify-between items-center border-b-2 border-gray-300 hover:border-gray-900 transition-colors mb-2 md:mb-6 group" id="past-toggle" aria-expanded="true">
+                    <h2 class="text-lg md:text-2xl font-semibold text-gray-500 m-0 group-hover:text-gray-600 transition-colors">Past Concerts</h2>
+                    <span class="text-lg md:text-xl font-light text-gray-500 leading-none">−</span>
+                </button>
+                <div class="flex-1 overflow-y-auto max-h-[calc(100vh-250px)] pr-2 transition-all duration-300" id="past-concerts" style="scrollbar-width: thin; scrollbar-color: #ccc #f1f1f1;">
+                    <!-- Concerts will be loaded here -->
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <style>
+        /* Custom scrollbar for Webkit browsers */
+        #upcoming-concerts::-webkit-scrollbar,
+        #past-concerts::-webkit-scrollbar {
+            width: 6px;
+        }
+        #upcoming-concerts::-webkit-scrollbar-track,
+        #past-concerts::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 3px;
+        }
+        #upcoming-concerts::-webkit-scrollbar-thumb,
+        #past-concerts::-webkit-scrollbar-thumb {
+            background: #ccc;
+            border-radius: 3px;
+        }
+        #upcoming-concerts::-webkit-scrollbar-thumb:hover,
+        #past-concerts::-webkit-scrollbar-thumb:hover {
+            background: #999;
+        }
+    </style>
+
+    <script src="concerts.js"></script>
+</body>
+</html>
