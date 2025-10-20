@@ -1,16 +1,87 @@
 // Load concerts data and initialize the page
 async function loadConcerts() {
     try {
-        const response = await fetch('concerts-data.json');
+        const response = await fetch('assets/data/concerts-data.json');
         const data = await response.json();
 
-        displayConcerts('upcoming-concerts', data.upcoming);
-        displayConcerts('past-concerts', data.past);
+        // Get all concerts from either new format (concerts array) or old format (upcoming/past arrays)
+        const allConcerts = data.concerts || [...(data.upcoming || []), ...(data.past || [])];
+
+        // Sort concerts into upcoming and past based on current date/time
+        const { upcoming, past } = sortConcertsByDateTime(allConcerts);
+
+        displayConcerts('upcoming-concerts', upcoming);
+        displayConcerts('past-concerts', past);
     } catch (error) {
         console.error('Error loading concerts:', error);
         document.getElementById('upcoming-concerts').innerHTML = '<p class="text-center text-gray-400 p-8 italic">Error loading concerts data.</p>';
         document.getElementById('past-concerts').innerHTML = '<p class="text-center text-gray-400 p-8 italic">Error loading concerts data.</p>';
     }
+}
+
+// Sort concerts into upcoming and past based on current date/time
+function sortConcertsByDateTime(concerts) {
+    const now = new Date();
+    const upcoming = [];
+    const past = [];
+
+    concerts.forEach(concert => {
+        const concertDateTime = parseConcertDateTime(concert.date, concert.time);
+
+        if (concertDateTime >= now) {
+            upcoming.push(concert);
+        } else {
+            past.push(concert);
+        }
+    });
+
+    // Sort upcoming concerts chronologically (earliest first)
+    upcoming.sort((a, b) => {
+        const dateA = parseConcertDateTime(a.date, a.time);
+        const dateB = parseConcertDateTime(b.date, b.time);
+        return dateA - dateB;
+    });
+
+    // Sort past concerts reverse chronologically (most recent first)
+    past.sort((a, b) => {
+        const dateA = parseConcertDateTime(a.date, a.time);
+        const dateB = parseConcertDateTime(b.date, b.time);
+        return dateB - dateA;
+    });
+
+    return { upcoming, past };
+}
+
+// Parse concert date and time into a Date object
+function parseConcertDateTime(dateString, timeString) {
+    const date = new Date(dateString);
+
+    if (timeString && timeString !== 'TBA') {
+        // Parse time string (e.g., "3:00 PM", "11:00 AM")
+        const timeMatch = timeString.match(/(\d{1,2}):(\d{2})\s*(AM|PM)/i);
+        if (timeMatch) {
+            let hours = parseInt(timeMatch[1]);
+            const minutes = parseInt(timeMatch[2]);
+            const meridiem = timeMatch[3].toUpperCase();
+
+            // Convert to 24-hour format
+            if (meridiem === 'PM' && hours !== 12) {
+                hours += 12;
+            } else if (meridiem === 'AM' && hours === 12) {
+                hours = 0;
+            }
+
+            date.setHours(hours, minutes, 0, 0);
+        } else {
+            // If time format is not recognized, set to end of day to be safe
+            date.setHours(23, 59, 59, 999);
+        }
+    } else {
+        // If no time specified, set to end of day so it stays in upcoming until the day passes
+        date.setHours(23, 59, 59, 999);
+    }
+
+    return date;
 }
 
 // Display concerts in the specified container
@@ -29,7 +100,21 @@ function displayConcerts(containerId, concerts) {
 function createConcertCard(concert) {
     const formattedDate = formatDate(concert.date);
     const programHTML = concert.program ? createProgramHTML(concert.program) : '';
-    const linkHTML = concert.link ? `<a href="${concert.link}" class="inline-flex items-center gap-1 text-gray-900 no-underline text-sm font-medium hover:text-gray-500 transition-colors" target="_blank" rel="noopener"><i data-lucide="external-link" class="w-3.5 h-3.5"></i> More Info</a>` : '';
+
+    // Create location HTML - hyperlink if Google Maps link exists
+    const locationHTML = concert['google-maps']
+        ? `<a href="${concert['google-maps']}" class="text-gray-600 hover:text-gray-900 underline" target="_blank" rel="noopener">${concert.location}</a>`
+        : `<span>${concert.location}</span>`;
+
+    // Create info button HTML - only for events with "info" property
+    const infoButtonHTML = concert.info
+        ? `<a href="${concert.info}" class="inline-flex items-center gap-1 mt-2 text-sm text-blue-600 hover:text-blue-800 hover:underline transition-colors" target="_blank" rel="noopener">More Info <i data-lucide="external-link" class="w-3 h-3"></i></a>`
+        : '';
+
+    // Create note HTML - for special notes like "Contact us for tickets"
+    const noteHTML = concert.note
+        ? `<div class="mt-2 text-sm text-gray-500 italic">${concert.note}</div>`
+        : '';
 
     return `
         <div class="bg-white border border-gray-200 rounded-lg p-4 mb-3 hover:border-gray-400 transition-all">
@@ -42,10 +127,11 @@ function createConcertCard(concert) {
                 </div>
                 <div class="flex items-center gap-2 text-gray-600">
                     <i data-lucide="map-pin" class="w-4 h-4 text-gray-500"></i>
-                    <span>${concert.location}</span>
+                    ${locationHTML}
                 </div>
                 ${programHTML}
-                ${linkHTML ? `<div class="mt-1">${linkHTML}</div>` : ''}
+                ${noteHTML}
+                ${infoButtonHTML}
             </div>
         </div>
     `;

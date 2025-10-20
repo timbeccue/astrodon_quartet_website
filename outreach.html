@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Community Outreach - Astrodon Quartet</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Manrope', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="components/components.js"></script>
+</head>
+<body class="font-sans text-gray-800">
+    <main class="max-w-7xl mx-auto px-8 py-12">
+        <!-- Introduction Section -->
+        <section class="mb-16">
+            <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-6">Community Outreach</h1>
+            <div class="prose prose-lg max-w-none text-gray-700">
+                <p class="mb-4">
+                    The Astrodon Quartet is deeply committed to bringing the joy of chamber music to diverse communities throughout the Baltimore region. Our community outreach concerts bring live classical music to unconventional settings, making the art form accessible to audiences who might not otherwise have the opportunity to experience it.
+                </p>
+                <p class="mb-4">
+                    We perform in senior living facilities, schools, libraries, shelters, and community centers, creating intimate and engaging musical experiences. These performances are interactive and welcoming, often featuring conversations about the music, the instruments, and the stories behind the compositions we play.
+                </p>
+                <p>
+                    Through these outreach efforts, we aim to foster connections, spark curiosity about classical music, and demonstrate the power of live performance to enrich lives across all ages and backgrounds.
+                </p>
+            </div>
+        </section>
+
+        <!-- Photo Gallery Section -->
+        <section class="mb-16">
+            <h2 class="text-2xl md:text-3xl font-semibold text-gray-900 mb-6">Outreach in Action</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="overflow-hidden rounded-lg border border-gray-200 hover:border-gray-400 transition-colors">
+                    <img src="assets/images/_MG_6150.webp" alt="Astrodon Quartet performing at community outreach event" class="w-full h-64 object-cover">
+                </div>
+                <div class="overflow-hidden rounded-lg border border-gray-200 hover:border-gray-400 transition-colors">
+                    <img src="assets/images/_MG_6166.webp" alt="Astrodon Quartet at outreach concert" class="w-full h-64 object-cover">
+                </div>
+                <div class="overflow-hidden rounded-lg border border-gray-200 hover:border-gray-400 transition-colors">
+                    <img src="assets/images/_MG_6179.webp" alt="Astrodon Quartet engaging with community audience" class="w-full h-64 object-cover">
+                </div>
+                <div class="overflow-hidden rounded-lg border border-gray-200 hover:border-gray-400 transition-colors">
+                    <img src="assets/images/_MG_6208.webp" alt="Astrodon Quartet at community venue" class="w-full h-64 object-cover">
+                </div>
+                <div class="overflow-hidden rounded-lg border border-gray-200 hover:border-gray-400 transition-colors">
+                    <img src="assets/images/_MG_6242.webp" alt="Astrodon Quartet outreach performance" class="w-full h-64 object-cover">
+                </div>
+                <div class="overflow-hidden rounded-lg border border-gray-200 hover:border-gray-400 transition-colors">
+                    <img src="assets/images/_MG_6373.webp" alt="Astrodon Quartet connecting with audience" class="w-full h-64 object-cover">
+                </div>
+            </div>
+        </section>
+
+        <!-- Events Section -->
+        <section>
+            <h2 class="text-2xl md:text-3xl font-semibold text-gray-900 mb-8">Outreach Events</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- Upcoming Events -->
+                <div class="flex flex-col min-h-0">
+                    <button class="w-full py-1.5 md:py-3 cursor-pointer flex justify-between items-center border-b-2 border-gray-900 hover:border-gray-500 transition-colors mb-2 md:mb-6 group" id="upcoming-toggle" aria-expanded="true">
+                        <h3 class="text-lg md:text-xl font-semibold text-gray-900 m-0 group-hover:text-gray-600 transition-colors">Upcoming Events</h3>
+                        <span class="text-lg md:text-xl font-light text-gray-500 leading-none">−</span>
+                    </button>
+                    <div class="flex-1 overflow-y-auto max-h-[calc(100vh-250px)] pr-2 transition-all duration-300" id="upcoming-events" style="scrollbar-width: thin; scrollbar-color: #ccc #f1f1f1;">
+                        <!-- Events will be loaded here -->
+                    </div>
+                </div>
+
+                <!-- Past Events -->
+                <div class="flex flex-col min-h-0">
+                    <button class="w-full py-1.5 md:py-3 cursor-pointer flex justify-between items-center border-b-2 border-gray-300 hover:border-gray-900 transition-colors mb-2 md:mb-6 group" id="past-toggle" aria-expanded="true">
+                        <h3 class="text-lg md:text-xl font-semibold text-gray-500 m-0 group-hover:text-gray-600 transition-colors">Past Events</h3>
+                        <span class="text-lg md:text-xl font-light text-gray-500 leading-none">−</span>
+                    </button>
+                    <div class="flex-1 overflow-y-auto max-h-[calc(100vh-250px)] pr-2 transition-all duration-300" id="past-events" style="scrollbar-width: thin; scrollbar-color: #ccc #f1f1f1;">
+                        <!-- Events will be loaded here -->
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <style>
+        /* Custom scrollbar for Webkit browsers */
+        #upcoming-events::-webkit-scrollbar,
+        #past-events::-webkit-scrollbar {
+            width: 6px;
+        }
+        #upcoming-events::-webkit-scrollbar-track,
+        #past-events::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 3px;
+        }
+        #upcoming-events::-webkit-scrollbar-thumb,
+        #past-events::-webkit-scrollbar-thumb {
+            background: #ccc;
+            border-radius: 3px;
+        }
+        #upcoming-events::-webkit-scrollbar-thumb:hover,
+        #past-events::-webkit-scrollbar-thumb:hover {
+            background: #999;
+        }
+    </style>
+
+    <script src="outreach.js"></script>
+</body>
+</html>

@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About - Astrodon Quartet</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Manrope', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="components/components.js"></script>
+</head>
+<body class="font-sans text-gray-800">
+    <main class="min-h-[calc(100vh-100px)]">
+        <!-- About Section with Large Photo and Bio -->
+        <div class="flex flex-col lg:flex-row-reverse items-stretch">
+
+            <!-- Large Photo Container - Full width on mobile, partial on desktop -->
+            <div class="w-full lg:w-3/5 flex-shrink-0">
+                <img
+                    src="assets/images/happy-walking.jpg"
+                    alt="Astrodon Quartet"
+                    class="w-full h-full object-cover"
+                >
+            </div>
+
+            <!-- Bio Content -->
+            <div class="flex-1 px-8 py-12 lg:py-16 max-w-7xl">
+                <h1 class="text-4xl md:text-5xl font-semibold text-gray-900 mb-6">About Astrodon Quartet</h1>
+                <div class="space-y-6">
+                    <p class="text-lg text-gray-600 leading-relaxed">
+                        The Astrodon Quartet brings together four exceptional musicians dedicated to performing the finest chamber music repertoire. With a passion for both traditional and contemporary works, we strive to create unforgettable musical experiences.
+                    </p>
+                    <p class="text-lg text-gray-600 leading-relaxed">
+                        Our performances blend technical excellence with emotional depth, offering audiences a unique journey through the rich landscape of string quartet literature.
+                    </p>
+                    <p class="text-lg text-gray-600 leading-relaxed">
+                        Founded with a commitment to musical excellence and artistic innovation, we continue to captivate audiences with our distinctive sound and interpretive vision.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div style="display: none;">
+        <!-- Individual Bios Section 1-->
+        <div class="bg-gray-50">
+            <div class="max-w-7xl mx-auto px-8 py-16">
+                <h2 class="text-3xl md:text-4xl font-semibold text-gray-900 mb-8 text-center">Meet the Musicians</h2>
+
+                <!-- Desktop: Interactive version with photo selection -->
+                <div class="hidden md:block">
+
+                <!-- Profile Photos Grid -->
+                <div class="grid grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8 mb-12 max-w-6xl mx-auto">
+                    <!-- Dallas -->
+                    <div class="bio-photo-container cursor-pointer transition-all duration-300 hover:scale-110"
+                         onclick="showBio('dallas')"
+                         data-member="dallas">
+                        <div class="relative overflow-hidden rounded-lg border-4 border-transparent transition-all duration-200">
+                            <img src="assets/images/dallas-profile.jpg"
+                                 alt="Dallas Noble - Violin"
+                                 class="w-full aspect-[2/3] object-cover">
+                            <div class="absolute inset-0 bg-black bg-opacity-0 hover:bg-opacity-10 transition-all duration-200"></div>
+                        </div>
+                        <p class="text-center mt-3 font-semibold text-gray-700">Dallas Noble</p>
+                        <p class="text-center text-sm text-gray-500 italic">Violin</p>
+                    </div>
+
+                    <!-- Zach -->
+                    <div class="bio-photo-container cursor-pointer transition-all duration-300 hover:scale-110"
+                         onclick="showBio('zach')"
+                         data-member="zach">
+                        <div class="relative overflow-hidden rounded-lg border-4 border-transparent transition-all duration-200">
+                            <img src="assets/images/zach-profile.jpg"
+                                 alt="Zach Levin - Violin"
+                                 class="w-full aspect-[2/3] object-cover">
+                            <div class="absolute inset-0 bg-black bg-opacity-0 hover:bg-opacity-10 transition-all duration-200"></div>
+                        </div>
+                        <p class="text-center mt-3 font-semibold text-gray-700">Zach Levin</p>
+                        <p class="text-center text-sm text-gray-500 italic">Violin</p>
+                    </div>
+
+                    <!-- Amelia -->
+                    <div class="bio-photo-container cursor-pointer transition-all duration-300 hover:scale-110"
+                         onclick="showBio('amelia')"
+                         data-member="amelia">
+                        <div class="relative overflow-hidden rounded-lg border-4 border-transparent transition-all duration-200">
+                            <img src="assets/images/amelia-profile.jpg"
+                                 alt="Amelia Eckloff - Viola"
+                                 class="w-full aspect-[2/3] object-cover">
+                            <div class="absolute inset-0 bg-black bg-opacity-0 hover:bg-opacity-10 transition-all duration-200"></div>
+                        </div>
+                        <p class="text-center mt-3 font-semibold text-gray-700">Amelia Eckloff</p>
+                        <p class="text-center text-sm text-gray-500 italic">Viola</p>
+                    </div>
+
+                    <!-- Tim -->
+                    <div class="bio-photo-container cursor-pointer transition-all duration-300 hover:scale-110"
+                         onclick="showBio('tim')"
+                         data-member="tim">
+                        <div class="relative overflow-hidden rounded-lg border-4 border-transparent transition-all duration-200">
+                            <img src="assets/images/tim-profile.jpg"
+                                 alt="Tim Beccue - Cello"
+                                 class="w-full aspect-[2/3] object-cover">
+                            <div class="absolute inset-0 bg-black bg-opacity-0 hover:bg-opacity-10 transition-all duration-200"></div>
+                        </div>
+                        <p class="text-center mt-3 font-semibold text-gray-700">Tim Beccue</p>
+                        <p class="text-center text-sm text-gray-500 italic">Cello</p>
+                    </div>
+                </div>
+
+                <!-- Bio Display Area -->
+                <div id="bio-display" class="hidden max-w-4xl mx-auto bg-white rounded-lg shadow-lg p-8 min-h-[400px]">
+                </div>
+            </div>
+
+            <!-- Mobile: Single column with all bios shown -->
+            <div class="md:hidden space-y-12">
+                <!-- Dallas -->
+                <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                    <img src="assets/images/dallas-profile.jpg"
+                         alt="Dallas Noble - Violin"
+                         class="w-full aspect-[2/3] object-cover">
+                    <div class="p-6">
+                        <h3 class="text-2xl font-semibold text-gray-900 mb-1">Dallas Noble</h3>
+                        <p class="text-sm text-gray-500 mb-4 italic">Violin</p>
+                        <div class="space-y-4 text-gray-600 leading-relaxed">
+                            <p>
+                                Hailing from Hopewell, New Jersey, Dallas Noble is one of the violinists in the Astrodon Quartet, Mount Vernon
+                                Virtuosi's fellowship string quartet for the 2025-26 season. This is Dallas's first year with MVV, and they are so
+                                excited to be working alongside their colleagues to provide free concerts and music education to the Baltimore
+                                community.
+                            </p>
+                            <p>
+                                Dallas is a graduate of the Colburn Conservatory, where they studied with Robert Lipsett, and the University of
+                                Delaware, where they studied with Jeffrey Myers and the Calidore String Quartet. They were a member of UD's Graduate
+                                String Quartet-in-Residence program from 2023-25, during which time their ensemble (Trellis String Quartet) was a
+                                prizewinner at the Saint Paul String Quartet Competition and performed with the Verona Quartet in one of ENCORE Chamber
+                                Music Festival's mainstage concerts.
+                            </p>
+                            <p>
+                                Dallas's primary passion, alongside chamber music, has always been connecting with the people around them. During their
+                                time in Los Angeles, they began serving the Skid Row community with two organizations (Urban Voices Project and Street
+                                Symphony) that fundamentally changed their life and relationship with music, and since then, their aspiration has been
+                                to use music for the healing, empowerment, and liberation of all people.
+                            </p>
+                            <p>
+                                When they're not being a huge nerd about string quartet music and spamming the Astrodon group chat, Dallas enjoys
+                                teaching, writing, making playlists, trying new recipes (most of which are desserts), going on runs, exploring new
+                                places, looking up hikes to go on and only going on 25% of them, desperately trying to keep tomato plants alive, working
+                                on their spreadsheet of community organizations in the U.S. and Canada, cooking with Baltimore Food not Bombs, and
+                                trying to befriend the crows that live in their backyard.
+                            </p>
+                            <p>
+                                Dallas's favorite places in Baltimore so far are Wyman Park, the Music House (obvs), the community garden on Maryland
+                                Ave, and St. Luke's Church on the Avenue.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Zach -->
+                <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                    <img src="assets/images/zach-profile.jpg"
+                         alt="Zach Levin - Violin"
+                         class="w-full aspect-[2/3] object-cover">
+                    <div class="p-6">
+                        <h3 class="text-2xl font-semibold text-gray-900 mb-1">Zach Levin</h3>
+                        <p class="text-sm text-gray-500 mb-4 italic">Violin</p>
+                        <div class="space-y-4 text-gray-600 leading-relaxed">
+                            <p>
+                                Zach Levin is a violinist in the Astrodon Quartet, Mount Vernon Virtuosi's fellowship string quartet for the 2025-26
+                                season. He is extremely excited for this opportunity, as this fellowship places established musicians in under-served
+                                areas of Baltimore to provide free music lessons and performances throughout the community, at venues such as schools
+                                and hospitals, in addition to traditional concert appearances.
+                            </p>
+                            <p>
+                                Zach completed his Master's Degree at the University of Delaware, where he studied with Jeremy Berry and the Calidore
+                                String Quartet. He was a member of UD's Graduate String Quartet-in-Residence program from 2023-25 with his ensemble
+                                Trellis String Quartet. Zach completed his Bachelor's Degree at Dalhousie University in Halifax, Canada, where he
+                                studied with Philippe Djokic, Leo Perez, and Mark Lee.
+                            </p>
+                            <p>
+                                Zach has performed regularly with Symphony Nova Scotia, as well as in NYO Canada's "Frenergy" collaboration tour (2019)
+                                with the European Union Youth Orchestra. In 2023, Zach performed and mentored as a "Rising Star" in Vancouver Academy of
+                                Music's Sea to Sky Chamber Festival. Throughout his undergraduate program, Zach performed multiple times as a soloist
+                                with Dalhousie's Symphony Orchestra, on both viola and violin. He also developed a love for theatre while at Dalhousie,
+                                composing music for two musicals.
+                            </p>
+                            <p>
+                                Originally from Vancouver, Canada, Zach began his violin pursuit with Nicki Stieda, and the Vancouver Academy of Music;
+                                he later studied with Andrew Dawes (of the Orford String Quartet). A major part of Zach's passion for chamber music
+                                stems from his time with Andy, such as discussing string quartets while helping around on Andy's sailboat. In his free
+                                time, Zach enjoys watching baseball, finding new films and shows, and being a foodie. A couple of his favorite places in
+                                Baltimore so far are The Coral Wig, Sophomore Coffee, and Oriole Park at Camden Yards.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Amelia -->
+                <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                    <img src="assets/images/amelia-profile.jpg"
+                         alt="Amelia Eckloff - Viola"
+                         class="w-full aspect-[2/3] object-cover">
+                    <div class="p-6">
+                        <h3 class="text-2xl font-semibold text-gray-900 mb-1">Amelia Eckloff</h3>
+                        <p class="text-sm text-gray-500 mb-4 italic">Viola</p>
+                        <div class="space-y-4 text-gray-600 leading-relaxed">
+                            <p>
+                                Amelia Eckloff is the violist in the Astrodon Quartet and is excited to be starting her second year in the Mount Vernon
+                                Virtuosi String Quartet Fellowship. Amelia completed her Master's Degree at the Peabody Institute studying with Victoria
+                                Chiang, and her Bachelor's Degree at the Eastman School of Music studying with Masumi Rostad. Originally from Fairfax,
+                                Virginia, Amelia began her studies with Ramon Scavelli.
+                            </p>
+                            <p>
+                                Her love for chamber music has taken her across the United States—from the East Coast to Aspen, Colorado—and abroad to
+                                Seoul, South Korea. Amelia was honored to be part of the inaugural year of the Mount Vernon Virtuosi String Quartet
+                                Fellowship in 2024 and is thrilled to continue another season with Zach, Dallas, and Tim. Together, they perform weekly,
+                                engage with the Baltimore community, and teach in Baltimore City Schools. Passionate about music education, Amelia also
+                                teaches violin and viola to young students in Maryland and Northern Virginia.
+                            </p>
+                            <p>
+                                Outside of music, Amelia enjoys reading multiple books at a time, early morning hot yoga, and participating in
+                                irrationally competitive card games. She has two adorable cats and regularly has to resist the temptation to adopt any
+                                more from the streets of Baltimore. Her favorite places in Baltimore include Orient Express and Federal Hill.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tim -->
+                <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                    <img src="assets/images/tim-profile.jpg"
+                         alt="Tim Beccue - Cello"
+                         class="w-full aspect-[2/3] object-cover">
+                    <div class="p-6">
+                        <h3 class="text-2xl font-semibold text-gray-900 mb-1">Tim Beccue</h3>
+                        <p class="text-sm text-gray-500 mb-4 italic">Cello</p>
+                        <div class="space-y-4 text-gray-600 leading-relaxed">
+                            <p>
+                                Tim Beccue is the cellist in the Astrodon Quartet and is continuing his second year with the Mount Vernon Virtuosi
+                                string quartet fellowship. He completed his master's degree at the Peabody Institute studying under Amit Peled,
+                                following tutelage under Ben Hong, Trevor Handy, and Andrew Cook.
+                            </p>
+                            <p>
+                                Hailing from sunny Santa Barbara, Tim is an alumnus of the Music Academy of the West, and is a founding member of
+                                HEXTET, a string sextet which served as the ensemble in residence at Arcadia University. Tim's musical journey has taken
+                                him across Europe and Asia, including performances with the Taipei Music Academy Festival and the Changhua Chamber Music
+                                Society. As a soloist, he has been featured in concert with the West Coast Symphony and the Westmont Orchestra.
+                            </p>
+                            <p>
+                                Tim's passion lies in chamber music and its ability to foster human connection. In 2024, his quartet was selected for
+                                the inaugural Mount Vernon Virtuosi string quartet fellowship. This fellowship places established musicians in
+                                under-served areas of Baltimore to provide free music lessons and performances throughout the community such as schools
+                                and hospitals, in addition to traditional concert appearances. He will continue the MVV fellowship with the Astrodon
+                                Quartet through the 2025-26 season.
+                            </p>
+                            <p>
+                                An enjoyer of big things, Tim couldn't resist learning the double bass, which he played with his former jazz quartet The
+                                Dumpster Cats. Tim holds a degree in physics and writes software for robotic telescopes at Las Cumbres Observatory. His
+                                favorite place in Baltimore is the volleyball courts at Baltimore Beach.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+
+        <script>
+            // Bio content
+            const bios = {
+                dallas: {
+                    name: "Dallas Noble",
+                    instrument: "Violin",
+                    content: `
+                        <p class="text-gray-600 leading-relaxed mb-4">
+                            Hailing from Hopewell, New Jersey, Dallas Noble is one of the violinists in the Astrodon Quartet, Mount Vernon
+                            Virtuosi's fellowship string quartet for the 2025-26 season. This is Dallas's first year with MVV, and they are so
+                            excited to be working alongside their colleagues to provide free concerts and music education to the Baltimore
+                            community.
+                        </p>
+                        <p class="text-gray-600 leading-relaxed mb-4">
+                            Dallas is a graduate of the Colburn Conservatory, where they studied with Robert Lipsett, and the University of
+                            Delaware, where they studied with Jeffrey Myers and the Calidore String Quartet. They were a member of UD's Graduate
+                            String Quartet-in-Residence program from 2023-25, during which time their ensemble (Trellis String Quartet) was a
+                            prizewinner at the Saint Paul String Quartet Competition and performed with the Verona Quartet in one of ENCORE Chamber
+                            Music Festival's mainstage concerts.
+                        </p>
+                        <p class="text-gray-600 leading-relaxed mb-4">
+                            Dallas's primary passion, alongside chamber music, has always been connecting with the people around them. During their
+                            time in Los Angeles, they began serving the Skid Row community with two organizations (Urban Voices Project and Street
+                            Symphony) that fundamentally changed their life and relationship with music, and since then, their aspiration has been
+                            to use music for the healing, empowerment, and liberation of all people.
+                        </p>
+                        <p class="text-gray-600 leading-relaxed mb-4">
+                            When they're not being a huge nerd about string quartet music and spamming the Astrodon group chat, Dallas enjoys
+                            teaching, writing, making playlists, trying new recipes (most of which are desserts), going on runs, exploring new
+                            places, looking up hikes to go on and only going on 25% of them, desperately trying to keep tomato plants alive, working
+                            on their spreadsheet of community organizations in the U.S. and Canada, cooking with Baltimore Food not Bombs, and
+                            trying to befriend the crows that live in their backyard.
+                        </p>
+                        <p class="text-gray-600 leading-relaxed">
+                            Dallas's favorite places in Baltimore so far are Wyman Park, the Music House (obvs), the community garden on Maryland
+                            Ave, and St. Luke's Church on the Avenue.
+                        </p>
+                    `
+                },
+                zach: {
+                    name: "Zach Levin",
+                    instrument: "Violin",
+                    content: `
+                        <p class="text-gray-600 leading-relaxed mb-4">
+                            Zach Levin is a violinist in the Astrodon Quartet, Mount Vernon Virtuosi's fellowship string quartet for the 2025-26
+                            season. He is extremely excited for this opportunity, as this fellowship places established musicians in under-served
+                            areas of Baltimore to provide free music lessons and performances throughout the community, at venues such as schools
+                            and hospitals, in addition to traditional concert appearances.
+                        </p>
+                        <p class="text-gray-600 leading-relaxed mb-4">
+                            Zach completed his Master's Degree at the University of Delaware, where he studied with Jeremy Berry and the Calidore
+                            String Quartet. He was a member of UD's Graduate String Quartet-in-Residence program from 2023-25 with his ensemble
+                            Trellis String Quartet. Zach completed his Bachelor's Degree at Dalhousie University in Halifax, Canada, where he
+                            studied with Philippe Djokic, Leo Perez, and Mark Lee.
+                        </p>
+                        <p class="text-gray-600 leading-relaxed mb-4">
+                            Zach has performed regularly with Symphony Nova Scotia, as well as in NYO Canada's "Frenergy" collaboration tour (2019)
+                            with the European Union Youth Orchestra. In 2023, Zach performed and mentored as a "Rising Star" in Vancouver Academy of
+                            Music's Sea to Sky Chamber Festival. Throughout his undergraduate program, Zach performed multiple times as a soloist
+                            with Dalhousie's Symphony Orchestra, on both viola and violin. He also developed a love for theatre while at Dalhousie,
+                            composing music for two musicals.
+                        </p>
+                        <p class="text-gray-600 leading-relaxed">
+                            Originally from Vancouver, Canada, Zach began his violin pursuit with Nicki Stieda, and the Vancouver Academy of Music;
+                            he later studied with Andrew Dawes (of the Orford String Quartet). A major part of Zach's passion for chamber music
+                            stems from his time with Andy, such as discussing string quartets while helping around on Andy's sailboat. In his free
+                            time, Zach enjoys watching baseball, finding new films and shows, and being a foodie. A couple of his favorite places in
+                            Baltimore so far are The Coral Wig, Sophomore Coffee, and Oriole Park at Camden Yards.
+                        </p>
+                    `
+                },
+                amelia: {
+                    name: "Amelia Eckloff",
+                    instrument: "Viola",
+                    content: `
+                        <p class="text-gray-600 leading-relaxed mb-4">
+                            Amelia Eckloff is the violist in the Astrodon Quartet and is excited to be starting her second year in the Mount Vernon
+                            Virtuosi String Quartet Fellowship. Amelia completed her Master's Degree at the Peabody Institute studying with Victoria
+                            Chiang, and her Bachelor's Degree at the Eastman School of Music studying with Masumi Rostad. Originally from Fairfax,
+                            Virginia, Amelia began her studies with Ramon Scavelli.
+                        </p>
+                        <p class="text-gray-600 leading-relaxed mb-4">
+                            Her love for chamber music has taken her across the United States—from the East Coast to Aspen, Colorado—and abroad to
+                            Seoul, South Korea. Amelia was honored to be part of the inaugural year of the Mount Vernon Virtuosi String Quartet
+                            Fellowship in 2024 and is thrilled to continue another season with Zach, Dallas, and Tim. Together, they perform weekly,
+                            engage with the Baltimore community, and teach in Baltimore City Schools. Passionate about music education, Amelia also
+                            teaches violin and viola to young students in Maryland and Northern Virginia.
+                        </p>
+                        <p class="text-gray-600 leading-relaxed">
+                            Outside of music, Amelia enjoys reading multiple books at a time, early morning hot yoga, and participating in
+                            irrationally competitive card games. She has two adorable cats and regularly has to resist the temptation to adopt any
+                            more from the streets of Baltimore. Her favorite places in Baltimore include Orient Express and Federal Hill.
+                        </p>
+                    `
+                },
+                tim: {
+                    name: "Tim Beccue",
+                    instrument: "Cello",
+                    content: `
+                        <p class="text-gray-600 leading-relaxed mb-4">
+                            Tim Beccue is the cellist in the Astrodon Quartet and is continuing his second year with the Mount Vernon Virtuosi
+                            string quartet fellowship. He completed his master's degree at the Peabody Institute studying under Amit Peled,
+                            following tutelage under Ben Hong, Trevor Handy, and Andrew Cook.
+                        </p>
+                        <p class="text-gray-600 leading-relaxed mb-4">
+                            Hailing from sunny Santa Barbara, Tim is an alumnus of the Music Academy of the West, and is a founding member of
+                            HEXTET, a string sextet which served as the ensemble in residence at Arcadia University. Tim's musical journey has taken
+                            him across Europe and Asia, including performances with the Taipei Music Academy Festival and the Changhua Chamber Music
+                            Society. As a soloist, he has been featured in concert with the West Coast Symphony and the Westmont Orchestra.
+                        </p>
+                        <p class="text-gray-600 leading-relaxed mb-4">
+                            Tim's passion lies in chamber music and its ability to foster human connection. In 2024, his quartet was selected for
+                            the inaugural Mount Vernon Virtuosi string quartet fellowship. This fellowship places established musicians in
+                            under-served areas of Baltimore to provide free music lessons and performances throughout the community such as schools
+                            and hospitals, in addition to traditional concert appearances. He will continue the MVV fellowship with the Astrodon
+                            Quartet through the 2025-26 season.
+                        </p>
+                        <p class="text-gray-600 leading-relaxed">
+                            An enjoyer of big things, Tim couldn't resist learning the double bass, which he played with his former jazz quartet The
+                            Dumpster Cats. Tim holds a degree in physics and writes software for robotic telescopes at Las Cumbres Observatory. His
+                            favorite place in Baltimore is the volleyball courts at Baltimore Beach.
+                        </p>
+                    `
+                }
+            };
+
+            function showBio(member) {
+                const bioDisplay = document.getElementById('bio-display');
+                const selectedBio = bios[member];
+
+                // Show the bio display area
+                bioDisplay.classList.remove('hidden');
+
+                // Update bio content
+                bioDisplay.innerHTML = `
+                    <h3 class="text-3xl font-semibold text-gray-900 mb-2">${selectedBio.name}</h3>
+                    <p class="text-lg text-gray-500 mb-6 italic">${selectedBio.instrument}</p>
+                    <div class="space-y-4">
+                        ${selectedBio.content}
+                    </div>
+                `;
+
+                // Remove scale from all photos
+                document.querySelectorAll('.bio-photo-container').forEach(container => {
+                    container.classList.remove('scale-110');
+                });
+
+                // Make selected container slightly larger
+                const selectedContainer = document.querySelector(`[data-member="${member}"]`);
+                selectedContainer.classList.add('scale-110');
+
+                // Scroll to bio display on mobile
+                if (window.innerWidth < 768) {
+                    bioDisplay.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                }
+            }
+        </script>
+        </div>
+
+        <!-- end individual bio section 1-->
+
+        <!-- Individual Bios Section 2-->
+        <div class="max-w-7xl mx-auto px-8 py-16">
+            <h2 class="text-3xl md:text-4xl font-semibold text-gray-900 mb-12 text-center">Meet the Musicians</h2>
+
+            <div class="space-y-12">
+                <!-- Member 1 -->
+                <div class="flex flex-col lg:flex-row gap-8">
+                    <div class="overflow-hidden rounded-lg border border-gray-200 flex-shrink-0 w-full lg:w-80">
+                        <img src="assets/images/dallas-profile.jpg" alt="First Violin" class="w-full h-full object-cover">
+                    </div>
+                    <div class="flex-1">
+                        <h3 class="text-2xl font-semibold text-gray-900 mb-2">Dallas Noble</h3>
+                        <p class="text-sm text-gray-500 mb-4 italic">Violin</p>
+                        <p class="text-gray-600 leading-relaxed mb-4">
+                            Hailing from Hopewell, New Jersey, Dallas Noble is one of the violinists in the Astrodon Quartet, Mount Vernon
+                            Virtuosi’s fellowship string quartet for the 2025-26 season. This is Dallas’s first year with MVV, and they are so
+                            excited to be working alongside their colleagues to provide free concerts and music education to the Baltimore
+                            community.
+                        </p>
+                        <p class="text-gray-600 leading-relaxed mb-4">
+                            Dallas is a graduate of the Colburn Conservatory, where they studied with Robert Lipsett, and the University of
+                            Delaware, where they studied with Jeffrey Myers and the Calidore String Quartet. They were a member of UD's Graduate
+                            String Quartet-in-Residence program from 2023-25, during which time their ensemble (Trellis String Quartet) was a
+                            prizewinner at the Saint Paul String Quartet Competition and performed with the Verona Quartet in one of ENCORE Chamber
+                            Music Festival's mainstage concerts.
+                        </p>
+                        <p class="text-gray-600 leading-relaxed mb-4">
+                            Dallas's primary passion, alongside chamber music, has always been connecting with the people around them. During their
+                            time in Los Angeles, they began serving the Skid Row community with two organizations (Urban Voices Project and Street
+                            Symphony) that fundamentally changed their life and relationship with music, and since then, their aspiration has been
+                            to use music for the healing, empowerment, and liberation of all people.
+                        </p>
+                        <p class="text-gray-600 leading-relaxed mb-4">
+                            When they're not being a huge nerd about string quartet music and spamming the Astrodon group chat, Dallas enjoys
+                            teaching, writing, making playlists, trying new recipes (most of which are desserts), going on runs, exploring new
+                            places, looking up hikes to go on and only going on 25% of them, desperately trying to keep tomato plants alive, working
+                            on their spreadsheet of community organizations in the U.S. and Canada, cooking with Baltimore Food not Bombs, and
+                            trying to befriend the crows that live in their backyard.
+                        </p>
+                        <p class="text-gray-600 leading-relaxed mb-4">
+                            Dallas’s favorite places in Baltimore so far are Wyman Park, the Music House (obvs), the community garden on Maryland
+                            Ave, and St. Luke’s Church on the Avenue.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Member 2 -->
+                <div class="flex flex-col lg:flex-row-reverse gap-8">
+                    <div class="overflow-hidden rounded-lg border border-gray-200 flex-shrink-0 w-full lg:w-80">
+                        <img src="assets/images/zach-profile.jpg" alt="Second Violin" class="w-full h-full object-cover">
+                    </div>
+                    <div class="flex-1 text-right">
+                        <h3 class="text-2xl font-semibold text-gray-900 mb-2">Zach Levin</h3>
+                        <p class="text-sm text-gray-500 mb-4 italic">Violin</p>
+                        <p class="text-gray-600 leading-relaxed mb-4">
+                            Zach Levin is a violinist in the Astrodon Quartet, Mount Vernon Virtuosi’s fellowship string quartet for the 2025-26
+                            season. He is extremely excited for this opportunity, as this fellowship places established musicians in under-served
+                            areas of Baltimore to provide free music lessons and performances throughout the community, at venues such as schools
+                            and hospitals, in addition to traditional concert appearances.
+                        </p>
+                        <p class="text-gray-600 leading-relaxed mb-4">
+                            Zach completed his Master's Degree at the University of Delaware, where he studied with Jeremy Berry and the Calidore
+                            String Quartet. He was a member of UD's Graduate String Quartet-in-Residence program from 2023-25 with his ensemble
+                            Trellis String Quartet. Zach completed his Bachelor's Degree at Dalhousie University in Halifax, Canada, where he
+                            studied with Philippe Djokic, Leo Perez, and Mark Lee.
+                        </p>
+                        <p class="text-gray-600 leading-relaxed mb-4">
+                            Zach has performed regularly with Symphony Nova Scotia, as well as in NYO Canada's "Frenergy" collaboration tour (2019)
+                            with the European Union Youth Orchestra. In 2023, Zach performed and mentored as a "Rising Star" in Vancouver Academy of
+                            Music's Sea to Sky Chamber Festival. Throughout his undergraduate program, Zach performed multiple times as a soloist
+                            with Dalhousie's Symphony Orchestra, on both viola and violin. He also developed a love for theatre while at Dalhousie,
+                            composing music for two musicals.
+                        </p>
+                        <p class="text-gray-600 leading-relaxed mb-4">
+                            Originally from Vancouver, Canada, Zach began his violin pursuit with Nicki Stieda, and the Vancouver Academy of Music;
+                            he later studied with Andrew Dawes (of the Orford String Quartet). A major part of Zach’s passion for chamber music
+                            stems from his time with Andy, such as discussing string quartets while helping around on Andy’s sailboat. In his free
+                            time, Zach enjoys watching baseball, finding new films and shows, and being a foodie. A couple of his favorite places in
+                            Baltimore so far are The Coral Wig, Sophomore Coffee, and Oriole Park at Camden Yards.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Member 3 -->
+                <div class="flex flex-col lg:flex-row gap-8">
+                    <div class="overflow-hidden rounded-lg border border-gray-200 flex-shrink-0 w-full lg:w-80">
+                        <img src="assets/images/amelia-profile.jpg" alt="Viola" class="w-full h-full object-cover">
+                    </div>
+                    <div class="flex-1">
+                        <h3 class="text-2xl font-semibold text-gray-900 mb-2">Amelia Eckloff</h3>
+                        <p class="text-sm text-gray-500 mb-4 italic">Viola</p>
+                        <p class="text-gray-600 leading-relaxed mb-4">
+                            Amelia Eckloff is the violist in the Astrodon Quartet and is excited to be starting her second year in the Mount Vernon
+                            Virtuosi String Quartet Fellowship. Amelia completed her Master’s Degree at the Peabody Institute studying with Victoria
+                            Chiang, and her Bachelor’s Degree at the Eastman School of Music studying with Masumi Rostad. Originally from Fairfax,
+                            Virginia, Amelia began her studies with Ramon Scavelli.
+                        </p>
+                        <p class="text-gray-600 leading-relaxed mb-4">
+                            Her love for chamber music has taken her across the United States—from the East Coast to Aspen, Colorado—and abroad to
+                            Seoul, South Korea. Amelia was honored to be part of the inaugural year of the Mount Vernon Virtuosi String Quartet
+                            Fellowship in 2024 and is thrilled to continue another season with Zach, Dallas, and Tim. Together, they perform weekly,
+                            engage with the Baltimore community, and teach in Baltimore City Schools. Passionate about music education, Amelia also
+                            teaches violin and viola to young students in Maryland and Northern Virginia.
+                        </p>
+                        <p class="text-gray-600 leading-relaxed mb-4">
+                            Outside of music, Amelia enjoys reading multiple books at a time, early morning hot yoga, and participating in
+                            irrationally competitive card games. She has two adorable cats and regularly has to resist the temptation to adopt any
+                            more from the streets of Baltimore. Her favorite places in Baltimore include Orient Express and Federal Hill.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Member 4 -->
+                <div class="flex flex-col lg:flex-row-reverse gap-8">
+                    <div class="overflow-hidden rounded-lg border border-gray-200 flex-shrink-0 w-full lg:w-80">
+                        <img src="assets/images/tim-profile.jpg" alt="Cello" class="w-full h-full object-cover">
+                    </div>
+                    <div class="flex-1 text-right">
+                        <h3 class="text-2xl font-semibold text-gray-900 mb-2">Tim Beccue</h3>
+                        <p class="text-sm text-gray-500 mb-4 italic">Cello</p>
+                        <p class="text-gray-600 leading-relaxed mb-4">
+                            Tim Beccue is the cellist in the Astrodon Quartet and is continuing his second year with the Mount Vernon Virtuosi
+                            string quartet fellowship. He completed his master’s degree at the Peabody Institute studying under Amit Peled,
+                            following tutelage under Ben Hong, Trevor Handy, and Andrew Cook.
+                        </p>
+                        <p class="text-gray-600 leading-relaxed mb-4">
+                            Hailing from sunny Santa Barbara, Tim is an alumnus of the Music Academy of the West, and is a founding member of
+                            HEXTET, a string sextet which served as the ensemble in residence at Arcadia University. Tim's musical journey has taken
+                            him across Europe and Asia, including performances with the Taipei Music Academy Festival and the Changhua Chamber Music
+                            Society. As a soloist, he has been featured in concert with the West Coast Symphony and the Westmont Orchestra.
+                        </p>
+                        <p class="text-gray-600 leading-relaxed mb-4">
+                            Tim's passion lies in chamber music and its ability to foster human connection. In 2024, his quartet was selected for
+                            the inaugural Mount Vernon Virtuosi string quartet fellowship. This fellowship places established musicians in
+                            under-served areas of Baltimore to provide free music lessons and performances throughout the community such as schools
+                            and hospitals, in addition to traditional concert appearances. He will continue the MVV fellowship with the Astrodon
+                            Quartet through the 2025-26 season.
+                        </p>
+                        <p class="text-gray-600 leading-relaxed mb-4">
+                            An enjoyer of big things, Tim couldn’t resist learning the double bass, which he played with his former jazz quartet The
+                            Dumpster Cats. Tim holds a degree in physics and writes software for robotic telescopes at Las Cumbres Observatory. His
+                            favorite place in Baltimore is the volleyball courts at Baltimore Beach.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+</body>
+</html>

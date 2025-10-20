@@ -1,0 +1,90 @@
+{
+  "upcoming": [
+    {
+      "name": "My Sister's Place",
+      "date": "2025-10-29",
+      "location": "Baltimore, MD",
+      "type": "Women's Shelter"
+    },
+    {
+      "name": "KIPP School - Every Child Deserves a Voice",
+      "date": "2025-11-03",
+      "location": "Baltimore, MD",
+      "type": "Elementary School"
+    },
+    {
+      "name": "Cecil Elementary",
+      "date": "2025-11-17",
+      "location": "Baltimore, MD",
+      "type": "Elementary School"
+    },
+    {
+      "name": "My Sister's Place",
+      "date": "2025-11-25",
+      "location": "Baltimore, MD",
+      "type": "Women's Shelter"
+    },
+    {
+      "name": "My Sister's Place",
+      "date": "2025-12-16",
+      "location": "Baltimore, MD",
+      "type": "Women's Shelter"
+    },
+    {
+      "name": "Baltimore Station Veterans Shelter",
+      "date": "2026-01-13",
+      "location": "Baltimore, MD",
+      "type": "Veterans Shelter"
+    },
+    {
+      "name": "My Sister's Place",
+      "date": "2026-02-24",
+      "location": "Baltimore, MD",
+      "type": "Women's Shelter"
+    },
+    {
+      "name": "Glen Meadows Senior Living",
+      "date": "2026-03-18",
+      "location": "Glen Arm, MD",
+      "type": "Senior Living"
+    },
+    {
+      "name": "My Sister's Place",
+      "date": "2026-03-31",
+      "location": "Baltimore, MD",
+      "type": "Women's Shelter"
+    },
+    {
+      "name": "Avery Point Retirement",
+      "date": "2026-04-18",
+      "location": "Baltimore, MD",
+      "type": "Retirement Community"
+    },
+    {
+      "name": "Roland Park Women's Club",
+      "date": "2026-04-25",
+      "location": "Baltimore, MD",
+      "type": "Community Center"
+    }
+  ],
+  "past": [
+    {
+      "name": "Baltimore Station Veterans Shelter",
+      "date": "2025-09-05",
+      "location": "Baltimore, MD",
+      "type": "Veterans Shelter"
+    },
+    {
+      "name": "Green School - Every Child Deserves a Voice",
+      "date": "2025-09-29",
+      "location": "Baltimore, MD",
+      "type": "Elementary School"
+    },
+    {
+      "name": "Blakehurst Retirement Community",
+      "date": "2025-10-09",
+      "location": "Towson, MD",
+      "type": "Retirement Community"
+    }
+  ]
+}
