@@ -27,8 +27,6 @@
     <script src="components/components.js"></script>
     <script src="utils.js"></script>
     <script>
-        // Note: parseConcertDateTime and formatDate are now loaded from utils.js
-
         // Load next concert data
         fetch('assets/data/concerts-data.json')
             .then(response => response.json())
@@ -150,7 +148,8 @@
         }
 
         .image-top {
-            background-image: url('assets/images/plainwalls.jpg');
+            background-image: url('assets/images/plainwalls.webp');
+            opacity: 1;
             transition: opacity 0.1s ease-out;
         }
 
@@ -264,86 +263,6 @@
                 </div>
             </div>
         </div>
-
-        <!-- Hero Section -->
-        <div class="relative h-[70vh] flex items-end justify-center" style="display: none;">
-            <picture class="absolute inset-0">
-                <!-- Ultra-wide screens (21:9 and wider) -->
-                <source
-                    media="(min-aspect-ratio: 21/9)"
-                    srcset="assets/images/home-group-ultrawide.jpg"
-                >
-                <!-- Wide screens (16:9 to 21:9) -->
-                <source
-                    media="(min-aspect-ratio: 16/9)"
-                    srcset="assets/images/home-group-wide.jpg"
-                >
-                <!-- Standard landscape (4:3 to 16:9) -->
-                <source
-                    media="(min-aspect-ratio: 4/3)"
-                    srcset="assets/images/home-group-standard.jpg"
-                >
-                <!-- Nearly square (5:4 to 4:3) - Between square and standard -->
-                <source
-                    media="(min-aspect-ratio: 5/4)"
-                    srcset="assets/images/home-group-nearly-square.jpg"
-                >
-                <!-- Square (9:10 to 5:4) - True square-ish -->
-                <source
-                    media="(min-aspect-ratio: 9/10)"
-                    srcset="assets/images/home-group-square.jpg"
-                >
-                <!-- Tall portrait (3:4 to 9:10) - Between square and vertical -->
-                <source
-                    media="(min-aspect-ratio: 3/4)"
-                    srcset="assets/images/home-group-tall-portrait.jpg"
-                >
-                <!-- Very tall portrait (< 3:4) - Very vertical -->
-                <img
-                    src="assets/images/home-group-portrait.jpg"
-                    alt="Astrodon Quartet"
-                    class="w-full h-full object-cover object-center"
-                >
-            </picture>
-            <!-- Temporary label overlays for testing aspect ratios -->
-            <!-- <div class="absolute top-4 left-4 z-20 bg-yellow-400 text-black px-4 py-2 rounded font-bold text-sm hidden aspect-ultra-wide">ULTRA-WIDE (21:9+)</div>
-            <div class="absolute top-4 left-4 z-20 bg-blue-400 text-white px-4 py-2 rounded font-bold text-sm hidden aspect-wide">WIDE (16:9 - 21:9)</div>
-            <div class="absolute top-4 left-4 z-20 bg-green-400 text-white px-4 py-2 rounded font-bold text-sm hidden aspect-standard">STANDARD (4:3 - 16:9)</div>
-            <div class="absolute top-4 left-4 z-20 bg-orange-400 text-white px-4 py-2 rounded font-bold text-sm hidden aspect-nearly-square">NEARLY SQUARE (5:4 - 4:3)</div>
-            <div class="absolute top-4 left-4 z-20 bg-pink-400 text-white px-4 py-2 rounded font-bold text-sm hidden aspect-square">SQUARE (9:10 - 5:4)</div>
-            <div class="absolute top-4 left-4 z-20 bg-indigo-400 text-white px-4 py-2 rounded font-bold text-sm hidden aspect-tall-portrait">TALL PORTRAIT (3:4 - 9:10)</div>
-            <div class="absolute top-4 left-4 z-20 bg-purple-400 text-white px-4 py-2 rounded font-bold text-sm hidden aspect-portrait">VERY TALL (< 3:4)</div> -->
-            <style>
-                @media (min-aspect-ratio: 21/9) {
-                    .aspect-ultra-wide { display: block !important; }
-                }
-                @media (min-aspect-ratio: 16/9) and (max-aspect-ratio: 21/9) {
-                    .aspect-wide { display: block !important; }
-                }
-                @media (min-aspect-ratio: 4/3) and (max-aspect-ratio: 16/9) {
-                    .aspect-standard { display: block !important; }
-                }
-                @media (min-aspect-ratio: 5/4) and (max-aspect-ratio: 4/3) {
-                    .aspect-nearly-square { display: block !important; }
-                }
-                @media (min-aspect-ratio: 9/10) and (max-aspect-ratio: 5/4) {
-                    .aspect-square { display: block !important; }
-                }
-                @media (min-aspect-ratio: 3/4) and (max-aspect-ratio: 9/10) {
-                    .aspect-tall-portrait { display: block !important; }
-                }
-                @media (max-aspect-ratio: 3/4) {
-                    .aspect-portrait { display: block !important; }
-                }
-            </style>
-            <div class="absolute inset-0 bg-black bg-opacity-40"></div>
-            <div class="relative z-10 text-center text-white px-8">
-                <h1 class="text-5xl md:text-7xl font-bold mb-4">Astrodon Quartet</h1>
-                <h2 class="text-3xl md:text-3xl font-light pb-8">Bringing chamber music to life</h2>
-            </div>
-        </div>
-
-
 
     </main>
 
