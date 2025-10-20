@@ -28,10 +28,11 @@
 <body class="font-sans text-gray-800">
     <main class="min-h-[calc(100vh-100px)]">
         <!-- About Section with Large Photo and Bio -->
-        <div class="flex flex-col lg:flex-row-reverse items-stretch">
+        <div class="max-w-7xl mx-auto px-8 py-12 lg:py-16">
+            <div class="flex flex-col lg:flex-row-reversee items-stretch gap-8">
 
-            <!-- Large Photo Container - Full width on mobile, partial on desktop -->
-            <div class="w-full lg:w-3/5 flex-shrink-0">
+                <!-- Large Photo Container - Full width on mobile, partial on desktop -->
+                <div class="w-full lg:w-1/1 flex-shrink-0">
                 <img
                     src="assets/images/happy-walking.jpg"
                     alt="Astrodon Quartet"
@@ -39,19 +40,39 @@
                 >
             </div>
 
-            <!-- Bio Content -->
-            <div class="flex-1 px-8 py-12 lg:py-16 max-w-7xl">
-                <h1 class="text-4xl md:text-5xl font-semibold text-gray-900 mb-6">About Astrodon Quartet</h1>
+                <!-- Bio Content -->
+                <div class="flex-1">
+                    <!-- <h1 class="text-4xl md:text-5xl font-semibold text-gray-900 mb-6">Who we are</h1> -->
                 <div class="space-y-6">
                     <p class="text-lg text-gray-600 leading-relaxed">
-                        The Astrodon Quartet brings together four exceptional musicians dedicated to performing the finest chamber music repertoire. With a passion for both traditional and contemporary works, we strive to create unforgettable musical experiences.
+                        The Astrodon Quartet brings together four exceptional musicians dedicated to the art of the string quartet. Unified by
+                        their devotion to their craft and their commitment to community service, they strive to bring the highest quality of
+                        musical performance and education to communities of every socioeconomic status.
                     </p>
                     <p class="text-lg text-gray-600 leading-relaxed">
-                        Our performances blend technical excellence with emotional depth, offering audiences a unique journey through the rich landscape of string quartet literature.
+                        Named for the first dinosaur discovered in their home state of Maryland, the group shares a love for the city of
+                        Baltimore almost as deep as their love for the string quartet repertoire. Individually, Astrodon’s musicians represent
+                        three states and two countries; but Baltimore is the city which has nurtured their growth as a unit. Its spirit of
+                        cooperation, determination, and creativity has inspired them in every moment of their journey, from the local
+                        organizations they visit to the students they teach to the three community gardens in their neighborhood.
                     </p>
                     <p class="text-lg text-gray-600 leading-relaxed">
-                        Founded with a commitment to musical excellence and artistic innovation, we continue to captivate audiences with our distinctive sound and interpretive vision.
+                        In performance, the group has been described as “captivating,” “moving,” and “unbelievably beautiful.” Their emotional
+                        depth, spontaneity, and gift for audience engagement has created meaningful experiences for audiences of many walks of
+                        life across Baltimore and Washington D.C. They believe their role as musicians is not just to entertain or to weave a
+                        masterful story, but to create moments of true connection between people, and they carry this principle into their work
+                        as both performers and educators.
                     </p>
+                    <p class="text-lg text-gray-600 leading-relaxed">
+                        The Astrodon Quartet is a recipient of Mount Vernon Virtuosi’s string quartet fellowship. Mount Vernon Virtuosi is a
+                        nonprofit organization in Baltimore that provides free string orchestra and string quartet concerts to the public and
+                        free music education to Baltimore public schools. Astrodon’s first year has been marked by weekly performances for the
+                        organization as well as many exciting collaborations, including performances with clarinetist Alexander Fiterstein and
+                        projects with local visual artists. The group lives together in the MVV’s Mars Music House, where they rehearse and
+                        perform, and they also teach at two Baltimore public schools, KIPP Academy and the Green School. They are honored to
+                        have been coached by Amit Peled and members of the Calidore and Cavani String Quartets.
+                    </p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -444,11 +465,16 @@
 
         <!-- end individual bio section 1-->
 
+        <!-- Divider -->
+        <div class="max-w-6xl mx-auto px-8 py-16">
+            <hr class="border-t border-gray-300">
+        </div>
+
         <!-- Individual Bios Section 2-->
         <div class="max-w-7xl mx-auto px-8 py-16">
-            <h2 class="text-3xl md:text-4xl font-semibold text-gray-900 mb-12 text-center">Meet the Musicians</h2>
+            <!-- <h2 class="text-3xl md:text-4xl font-semibold text-gray-900 mb-12 text-center">Meet the Musicians</h2> -->
 
-            <div class="space-y-12">
+            <div class="space-y-32">
                 <!-- Member 1 -->
                 <div class="flex flex-col lg:flex-row gap-8">
                     <div class="overflow-hidden rounded-lg border border-gray-200 flex-shrink-0 w-full lg:w-80">
@@ -495,7 +521,7 @@
                     <div class="overflow-hidden rounded-lg border border-gray-200 flex-shrink-0 w-full lg:w-80">
                         <img src="assets/images/zach-profile.jpg" alt="Second Violin" class="w-full h-full object-cover">
                     </div>
-                    <div class="flex-1 text-right">
+                    <div class="flex-1 text-left">
                         <h3 class="text-2xl font-semibold text-gray-900 mb-2">Zach Levin</h3>
                         <p class="text-sm text-gray-500 mb-4 italic">Violin</p>
                         <p class="text-gray-600 leading-relaxed mb-4">
@@ -561,7 +587,7 @@
                     <div class="overflow-hidden rounded-lg border border-gray-200 flex-shrink-0 w-full lg:w-80">
                         <img src="assets/images/tim-profile.jpg" alt="Cello" class="w-full h-full object-cover">
                     </div>
-                    <div class="flex-1 text-right">
+                    <div class="flex-1 text-left">
                         <h3 class="text-2xl font-semibold text-gray-900 mb-2">Tim Beccue</h3>
                         <p class="text-sm text-gray-500 mb-4 italic">Cello</p>
                         <p class="text-gray-600 leading-relaxed mb-4">

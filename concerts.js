@@ -52,37 +52,7 @@ function sortConcertsByDateTime(concerts) {
     return { upcoming, past };
 }
 
-// Parse concert date and time into a Date object
-function parseConcertDateTime(dateString, timeString) {
-    const date = new Date(dateString);
-
-    if (timeString && timeString !== 'TBA') {
-        // Parse time string (e.g., "3:00 PM", "11:00 AM")
-        const timeMatch = timeString.match(/(\d{1,2}):(\d{2})\s*(AM|PM)/i);
-        if (timeMatch) {
-            let hours = parseInt(timeMatch[1]);
-            const minutes = parseInt(timeMatch[2]);
-            const meridiem = timeMatch[3].toUpperCase();
-
-            // Convert to 24-hour format
-            if (meridiem === 'PM' && hours !== 12) {
-                hours += 12;
-            } else if (meridiem === 'AM' && hours === 12) {
-                hours = 0;
-            }
-
-            date.setHours(hours, minutes, 0, 0);
-        } else {
-            // If time format is not recognized, set to end of day to be safe
-            date.setHours(23, 59, 59, 999);
-        }
-    } else {
-        // If no time specified, set to end of day so it stays in upcoming until the day passes
-        date.setHours(23, 59, 59, 999);
-    }
-
-    return date;
-}
+// Note: parseConcertDateTime is now imported from utils.js
 
 // Display concerts in the specified container
 function displayConcerts(containerId, concerts) {
@@ -117,14 +87,11 @@ function createConcertCard(concert) {
         : '';
 
     return `
-        <div class="bg-white border border-gray-200 rounded-lg p-4 mb-3 hover:border-gray-400 transition-all">
-            <h3 class="text-lg font-semibold text-gray-900 mb-2">${concert.name}</h3>
+        <div class="bg-white border border-gray-200 rounded-lg p-5 mb-3 hover:border-gray-400 transition-all">
+            <div class="text-2xl font-bold text-gray-900 mb-1">${formattedDate}</div>
+            ${concert.time ? `<div class="text-base text-gray-600 mb-3">${concert.time}</div>` : '<div class="mb-3"></div>'}
+            <h3 class="text-lg font-semibold text-gray-800 mb-2">${concert.name}</h3>
             <div class="flex flex-col gap-1.5 text-sm">
-                <div class="flex items-center gap-2 text-gray-700">
-                    <i data-lucide="calendar" class="w-4 h-4 text-gray-500"></i>
-                    <span>${formattedDate}</span>
-                    ${concert.time ? `<span class="text-gray-400">•</span><i data-lucide="clock" class="w-4 h-4 text-gray-500"></i><span class="text-gray-600">${concert.time}</span>` : ''}
-                </div>
                 <div class="flex items-center gap-2 text-gray-600">
                     <i data-lucide="map-pin" class="w-4 h-4 text-gray-500"></i>
                     ${locationHTML}
@@ -137,12 +104,7 @@ function createConcertCard(concert) {
     `;
 }
 
-// Format date string
-function formatDate(dateString) {
-    const date = new Date(dateString);
-    const options = { year: 'numeric', month: 'long', day: 'numeric' };
-    return date.toLocaleDateString('en-US', options);
-}
+// Note: formatDate is now imported from utils.js
 
 // Create program HTML
 function createProgramHTML(program) {
@@ -158,77 +120,39 @@ function createProgramHTML(program) {
             </div>`;
 }
 
-// Toggle section visibility
-function toggleSection(sectionId, toggleButton) {
-    const section = document.getElementById(sectionId);
-    const icon = toggleButton.querySelector('.toggle-icon');
-    const isExpanded = toggleButton.getAttribute('aria-expanded') === 'true';
+// Switch between tabs
+function switchTab(tabName) {
+    // Update tab buttons
+    const tabButtons = document.querySelectorAll('.tab-button');
+    tabButtons.forEach(button => {
+        if (button.dataset.tab === tabName) {
+            button.classList.add('active');
+        } else {
+            button.classList.remove('active');
+        }
+    });
 
-    if (isExpanded) {
-        section.style.maxHeight = '0';
-        section.style.opacity = '0';
-        section.style.overflow = 'hidden';
-        toggleButton.setAttribute('aria-expanded', 'false');
-        icon.textContent = '+';
-    } else {
-        section.style.maxHeight = 'calc(100vh - 250px)';
-        section.style.opacity = '1';
-        section.style.overflow = 'auto';
-        toggleButton.setAttribute('aria-expanded', 'true');
-        icon.textContent = '−';
-    }
-}
-
-// Check if we're in mobile view
-function isMobileView() {
-    return window.innerWidth < 768; // md breakpoint
-}
-
-// Set initial state for past concerts based on screen size
-function setInitialPastConcertsState() {
-    const pastSection = document.getElementById('past-concerts');
-    const pastToggle = document.getElementById('past-toggle');
-    const icon = pastToggle.querySelector('span:last-child');
-
-    if (isMobileView()) {
-        // Collapse on mobile
-        pastSection.style.maxHeight = '0';
-        pastSection.style.opacity = '0';
-        pastSection.style.overflow = 'hidden';
-        pastToggle.setAttribute('aria-expanded', 'false');
-        icon.textContent = '+';
-    } else {
-        // Expand on desktop
-        pastSection.style.maxHeight = 'calc(100vh - 250px)';
-        pastSection.style.opacity = '1';
-        pastSection.style.overflow = 'auto';
-        pastToggle.setAttribute('aria-expanded', 'true');
-        icon.textContent = '−';
-    }
+    // Update tab panels
+    const tabPanels = document.querySelectorAll('.tab-panel');
+    tabPanels.forEach(panel => {
+        if (panel.id === `${tabName}-concerts`) {
+            panel.classList.add('active');
+        } else {
+            panel.classList.remove('active');
+        }
+    });
 }
 
 // Initialize event listeners
 document.addEventListener('DOMContentLoaded', () => {
     loadConcerts();
 
-    document.getElementById('upcoming-toggle').addEventListener('click', function() {
-        toggleSection('upcoming-concerts', this);
-    });
-
-    document.getElementById('past-toggle').addEventListener('click', function() {
-        toggleSection('past-concerts', this);
-    });
-
-    // Set initial state for past concerts
-    setInitialPastConcertsState();
-
-    // Handle window resize
-    let resizeTimer;
-    window.addEventListener('resize', () => {
-        clearTimeout(resizeTimer);
-        resizeTimer = setTimeout(() => {
-            setInitialPastConcertsState();
-        }, 250);
+    // Add click handlers to tab buttons
+    const tabButtons = document.querySelectorAll('.tab-button');
+    tabButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            switchTab(button.dataset.tab);
+        });
     });
 
     // Initialize Lucide icons after content is loaded

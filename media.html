@@ -75,15 +75,15 @@
 <body class="font-sans text-gray-800">
     <main class="max-w-7xl mx-auto px-8 py-12 min-h-[calc(100vh-100px)]">
         <!-- Page Header -->
-        <div class="mb-12">
+        <!-- <div class="mb-12">
             <h1 class="text-4xl md:text-5xl font-semibold text-gray-900 mb-4">Media</h1>
             <p class="text-lg text-gray-600 leading-relaxed max-w-3xl">
                 Experience our performances through videos and photography. Watch our recordings and explore moments captured from our concerts.
             </p>
-        </div>
+        </div> -->
 
         <!-- Video Section -->
-        <section class="mb-16">
+        <section class="mb-16" style="display: none;">
             <h2 class="text-3xl font-semibold text-gray-900 mb-8">Recordings</h2>
 
             <!-- Video Grid - Responsive layout for 1-4 videos -->
@@ -113,38 +113,41 @@
         <section>
             <h2 class="text-3xl font-semibold text-gray-900 mb-8">Photos</h2>
 
-            <!-- Gallery Grid -->
-            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-                <!-- Image 1 -->
-                <div class="aspect-square bg-gray-100 rounded-lg overflow-hidden cursor-pointer hover:opacity-90 transition-opacity" onclick="openLightbox('assets/images/media-page/formal-graffiti.jpg')">
-                    <img src="assets/images/media-page/formal-graffiti.jpg" alt="Astrodon Quartet - Formal Graffiti" class="w-full h-full object-cover">
+            <!-- Gallery - Mixed Layout -->
+            <div class="space-y-6">
+                <!-- Horizontal Photo 1 - Full Width -->
+                <div class="bg-gray-100 rounded-lg overflow-hidden cursor-pointer hover:opacity-90 transition-opacity" onclick="openLightbox('assets/images/media-page/formal-sitting.jpg')">
+                    <img src="assets/images/media-page/formal-sitting.jpg" alt="Astrodon Quartet - Formal Sitting" class="w-full h-auto object-cover">
                 </div>
 
-                <!-- Image 2 -->
-                <div class="aspect-square bg-gray-100 rounded-lg overflow-hidden cursor-pointer hover:opacity-90 transition-opacity" onclick="openLightbox('assets/images/media-page/formal-group.jpg')">
-                    <img src="assets/images/media-page/formal-group.jpg" alt="Astrodon Quartet - Formal Group" class="w-full h-full object-cover">
+                <!-- Vertical Photos - 2 Wide Row -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="bg-gray-100 rounded-lg overflow-hidden cursor-pointer hover:opacity-90 transition-opacity" onclick="openLightbox('assets/images/media-page/formal-group.jpg')">
+                        <img src="assets/images/media-page/formal-group.jpg" alt="Astrodon Quartet - Formal Group" class="w-full h-auto object-cover">
+                    </div>
+
+                    <div class="bg-gray-100 rounded-lg overflow-hidden cursor-pointer hover:opacity-90 transition-opacity" onclick="openLightbox('assets/images/media-page/mvv-shirts.jpg')">
+                        <img src="assets/images/media-page/mvv-shirts.jpg" alt="Astrodon Quartet - MVV Shirts" class="w-full h-auto object-cover">
+                    </div>
                 </div>
 
-                <!-- Image 3 -->
-                <div class="aspect-square bg-gray-100 rounded-lg overflow-hidden cursor-pointer hover:opacity-90 transition-opacity" onclick="openLightbox('assets/images/media-page/formal-sitting.jpg')">
-                    <img src="assets/images/media-page/formal-sitting.jpg" alt="Astrodon Quartet - Formal Sitting" class="w-full h-full object-cover">
+                <!-- Horizontal Photo 2 - Full Width -->
+                <div class="bg-gray-100 rounded-lg overflow-hidden cursor-pointer hover:opacity-90 transition-opacity" onclick="openLightbox('assets/images/media-page/formal-graffiti.jpg')">
+                    <img src="assets/images/media-page/formal-graffiti.jpg" alt="Astrodon Quartet - Formal Graffiti" class="w-full h-auto object-cover">
                 </div>
 
-                <!-- Image 4 -->
-                <div class="aspect-square bg-gray-100 rounded-lg overflow-hidden cursor-pointer hover:opacity-90 transition-opacity" onclick="openLightbox('assets/images/media-page/mvv-shirts.jpg')">
-                    <img src="assets/images/media-page/mvv-shirts.jpg" alt="Astrodon Quartet - MVV Shirts" class="w-full h-full object-cover">
-                </div>
+                <!-- Vertical Photos - 2 Wide Row -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="bg-gray-100 rounded-lg overflow-hidden cursor-pointer hover:opacity-90 transition-opacity" onclick="openLightbox('assets/images/media-page/posed-graffiti.jpg')">
+                        <img src="assets/images/media-page/posed-graffiti.jpg" alt="Astrodon Quartet - Posed Graffiti" class="w-full h-auto object-cover">
+                    </div>
 
-                <!-- Image 5 -->
-                <div class="aspect-square bg-gray-100 rounded-lg overflow-hidden cursor-pointer hover:opacity-90 transition-opacity" onclick="openLightbox('assets/images/media-page/posed-graffiti.jpg')">
-                    <img src="assets/images/media-page/posed-graffiti.jpg" alt="Astrodon Quartet - Posed Graffiti" class="w-full h-full object-cover">
-                </div>
-
-                <!-- Image 6 -->
-                <div class="aspect-square bg-gray-100 rounded-lg overflow-hidden cursor-pointer hover:opacity-90 transition-opacity" onclick="openLightbox('assets/images/media-page/walking-graffiti.jpg')">
-                    <img src="assets/images/media-page/walking-graffiti.jpg" alt="Astrodon Quartet - Walking Graffiti" class="w-full h-full object-cover">
+                    <div class="bg-gray-100 rounded-lg overflow-hidden cursor-pointer hover:opacity-90 transition-opacity" onclick="openLightbox('assets/images/media-page/walking-graffiti.jpg')">
+                        <img src="assets/images/media-page/walking-graffiti.jpg" alt="Astrodon Quartet - Walking Graffiti" class="w-full h-auto object-cover">
+                    </div>
                 </div>
             </div>
+            <p class="text-gray-600 my-8">Photography by Ben Freedman</p>
         </section>
     </main>
 

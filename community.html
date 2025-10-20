@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Community Outreach - Astrodon Quartet</title>
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon/favicon-16x16.png">
+    <link rel="manifest" href="assets/favicon/site.webmanifest">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Manrope', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="components/components.js"></script>
+    <style>
+        /* Lightbox styles */
+        .lightbox {
+            display: none;
+            position: fixed;
+            z-index: 999;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.95);
+            align-items: center;
+            justify-content: center;
+        }
+        .lightbox.active {
+            display: flex;
+        }
+        .lightbox img {
+            max-width: 90%;
+            max-height: 90vh;
+            object-fit: contain;
+        }
+        .lightbox-close {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            font-size: 40px;
+            color: white;
+            cursor: pointer;
+            z-index: 1000;
+        }
+    </style>
+</head>
+<body class="font-sans text-gray-800">
+    <main class="max-w-7xl mx-auto px-8 py-12">
+        <!-- Introduction Section -->
+        <section class="mb-16">
+            <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-6">Community Focused</h1>
+            <div class="prose prose-lg max-w-none text-gray-700">
+                <p class="mb-4">
+                    The Astrodon Quartet is deeply committed to bringing the joy of chamber music to diverse communities throughout the
+                    Baltimore region. Our community outreach concerts bring live classical music to unconventional settings, making the art
+                    form accessible to audiences who might not otherwise have the opportunity to experience it.
+                </p>
+                <p class="mb-4">
+                    We perform in senior living facilities, schools, libraries, shelters, and community centers, creating intimate and
+                    engaging musical experiences. These performances are interactive and welcoming, often featuring conversations about the
+                    music, the instruments, and the stories behind the compositions we play.
+                </p>
+                <p class="mb-4">
+                    In addition to our outreach concerts, we teach in Baltimore City Public Schools each week through Mount Vernon
+                    Virtuosi’s Every Child Deserves a Voice program, which provides instruments and instruction free of charge to beginner
+                    students. Through this initiative, we help young musicians discover their voices, develop foundational ensemble skills,
+                    and experience the joy of creating music together.
+                </p>
+                <p class="mb-4">
+                    Through these outreach efforts, we aim to foster connections, spark curiosity about classical music, and demonstrate the
+                    power of live performance to enrich lives across all ages and backgrounds.
+                </p>
+            </div>
+        </section>
+
+        <!-- Photo Gallery Section -->
+        <section class="mb-16">
+            <h2 class="text-2xl md:text-3xl font-semibold text-gray-900 mb-6">See what we're up to!</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="overflow-hidden rounded-lg cursor-pointer hover:opacity-90 transition-opacity" onclick="openLightbox('assets/images/outreach/amelia-ipad.jpeg')">
+                    <img src="assets/images/outreach/amelia-ipad.jpeg" alt="Student learning with iPad during music instruction" class="w-full h-auto">
+                </div>
+                <div class="overflow-hidden rounded-lg cursor-pointer hover:opacity-90 transition-opacity" onclick="openLightbox('assets/images/outreach/foodnotbombs.jpeg')">
+                    <img src="assets/images/outreach/foodnotbombs.jpeg" alt="Astrodon Quartet at Food Not Bombs community event" class="w-full h-auto">
+                </div>
+                <div class="overflow-hidden rounded-lg cursor-pointer hover:opacity-90 transition-opacity" onclick="openLightbox('assets/images/outreach/learning-notes.jpeg')">
+                    <img src="assets/images/outreach/learning-notes.jpeg" alt="Students learning to read music notation" class="w-full h-auto">
+                </div>
+                <div class="overflow-hidden rounded-lg cursor-pointer hover:opacity-90 transition-opacity" onclick="openLightbox('assets/images/outreach/practice-logs.jpeg')">
+                    <img src="assets/images/outreach/practice-logs.jpeg" alt="Student practice logs and progress tracking" class="w-full h-auto">
+                </div>
+            </div>
+        </section>
+
+        <!-- Events Section -->
+        <section>
+            <h2 class="text-2xl md:text-3xl font-semibold text-gray-900 mb-8">Community Concerts</h2>
+
+            <!-- Tabs Navigation -->
+            <div class="mb-8">
+                <div class="flex border-b-2 border-gray-200">
+                    <button
+                        class="tab-button px-6 py-3 text-lg font-semibold transition-colors border-b-2 -mb-0.5 active"
+                        data-tab="upcoming"
+                        id="upcoming-tab"
+                    >
+                        Upcoming Events
+                    </button>
+                    <button
+                        class="tab-button px-6 py-3 text-lg font-semibold transition-colors border-b-2 -mb-0.5"
+                        data-tab="past"
+                        id="past-tab"
+                    >
+                        Past Events
+                    </button>
+                </div>
+            </div>
+
+            <!-- Tab Content -->
+            <div class="tab-content">
+                <div id="upcoming-events" class="tab-panel active">
+                    <!-- Events will be loaded here -->
+                </div>
+                <div id="past-events" class="tab-panel">
+                    <!-- Events will be loaded here -->
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <style>
+        /* Tab styling */
+        .tab-button {
+            color: #6b7280;
+            border-color: transparent;
+        }
+
+        .tab-button:hover {
+            color: #374151;
+        }
+
+        .tab-button.active {
+            color: #111827;
+            border-color: #111827;
+        }
+
+        .tab-panel {
+            display: none;
+        }
+
+        .tab-panel.active {
+            display: block;
+        }
+
+        /* Custom scrollbar for Webkit browsers */
+        #upcoming-events::-webkit-scrollbar,
+        #past-events::-webkit-scrollbar {
+            width: 6px;
+        }
+        #upcoming-events::-webkit-scrollbar-track,
+        #past-events::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 3px;
+        }
+        #upcoming-events::-webkit-scrollbar-thumb,
+        #past-events::-webkit-scrollbar-thumb {
+            background: #ccc;
+            border-radius: 3px;
+        }
+        #upcoming-events::-webkit-scrollbar-thumb:hover,
+        #past-events::-webkit-scrollbar-thumb:hover {
+            background: #999;
+        }
+    </style>
+
+    <!-- Lightbox Modal -->
+    <div id="lightbox" class="lightbox" onclick="closeLightbox()">
+        <span class="lightbox-close">&times;</span>
+        <img id="lightbox-img" src="" alt="Full size image">
+    </div>
+
+    <script>
+        function openLightbox(imageSrc) {
+            const lightbox = document.getElementById('lightbox');
+            const lightboxImg = document.getElementById('lightbox-img');
+            lightboxImg.src = imageSrc;
+            lightbox.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeLightbox() {
+            const lightbox = document.getElementById('lightbox');
+            lightbox.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        // Close lightbox on escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeLightbox();
+            }
+        });
+    </script>
+
+    <script src="utils.js"></script>
+    <script src="community.js"></script>
+</body>
+</html>

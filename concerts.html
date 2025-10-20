@@ -33,32 +33,61 @@
             <img src="assets/images/media-page/formal-graffiti.jpg" alt="Astrodon Quartet" class="w-full h-auto aspect-[3/2] object-cover">
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-screen-2xl mx-auto">
-            <!-- Upcoming Concerts -->
-            <div class="flex flex-col min-h-0 order-2 md:order-1">
-                <button class="w-full py-1.5 md:py-3 cursor-pointer flex justify-between items-center border-b-2 border-gray-900 hover:border-gray-500 transition-colors mb-2 md:mb-6 group" id="upcoming-toggle" aria-expanded="true">
-                    <h2 class="text-lg md:text-2xl font-semibold text-gray-900 m-0 group-hover:text-gray-600 transition-colors">Upcoming Concerts</h2>
-                    <span class="text-lg md:text-xl font-light text-gray-500 leading-none">−</span>
+        <!-- Tabs Navigation -->
+        <div class="mb-8">
+            <div class="flex border-b-2 border-gray-200">
+                <button
+                    class="tab-button px-6 py-3 text-lg font-semibold transition-colors border-b-2 -mb-0.5 active"
+                    data-tab="upcoming"
+                    id="upcoming-tab"
+                >
+                    Upcoming Concerts
                 </button>
-                <div class="flex-1 overflow-y-auto max-h-[calc(100vh-250px)] pr-2 transition-all duration-300" id="upcoming-concerts" style="scrollbar-width: thin; scrollbar-color: #ccc #f1f1f1;">
-                    <!-- Concerts will be loaded here -->
-                </div>
+                <button
+                    class="tab-button px-6 py-3 text-lg font-semibold transition-colors border-b-2 -mb-0.5"
+                    data-tab="past"
+                    id="past-tab"
+                >
+                    Past Concerts
+                </button>
             </div>
+        </div>
 
-            <!-- Past Concerts -->
-            <div class="flex flex-col min-h-0 order-1 md:order-2">
-                <button class="w-full py-1.5 md:py-3 cursor-pointer flex justify-between items-center border-b-2 border-gray-300 hover:border-gray-900 transition-colors mb-2 md:mb-6 group" id="past-toggle" aria-expanded="true">
-                    <h2 class="text-lg md:text-2xl font-semibold text-gray-500 m-0 group-hover:text-gray-600 transition-colors">Past Concerts</h2>
-                    <span class="text-lg md:text-xl font-light text-gray-500 leading-none">−</span>
-                </button>
-                <div class="flex-1 overflow-y-auto max-h-[calc(100vh-250px)] pr-2 transition-all duration-300" id="past-concerts" style="scrollbar-width: thin; scrollbar-color: #ccc #f1f1f1;">
-                    <!-- Concerts will be loaded here -->
-                </div>
+        <!-- Tab Content -->
+        <div class="tab-content">
+            <div id="upcoming-concerts" class="tab-panel active">
+                <!-- Concerts will be loaded here -->
+            </div>
+            <div id="past-concerts" class="tab-panel">
+                <!-- Concerts will be loaded here -->
             </div>
         </div>
     </main>
 
     <style>
+        /* Tab styling */
+        .tab-button {
+            color: #6b7280;
+            border-color: transparent;
+        }
+
+        .tab-button:hover {
+            color: #374151;
+        }
+
+        .tab-button.active {
+            color: #111827;
+            border-color: #111827;
+        }
+
+        .tab-panel {
+            display: none;
+        }
+
+        .tab-panel.active {
+            display: block;
+        }
+
         /* Custom scrollbar for Webkit browsers */
         #upcoming-concerts::-webkit-scrollbar,
         #past-concerts::-webkit-scrollbar {
@@ -80,6 +109,7 @@
         }
     </style>
 
+    <script src="utils.js"></script>
     <script src="concerts.js"></script>
 </body>
 </html>

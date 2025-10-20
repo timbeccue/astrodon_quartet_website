@@ -24,6 +24,23 @@
                     link.classList.add('text-gray-900', 'font-medium');
                 }
             });
+
+            // Mobile menu toggle functionality
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const hamburgerIcon = document.getElementById('hamburger-icon');
+            const closeIcon = document.getElementById('close-icon');
+
+            if (mobileMenuButton && mobileMenu) {
+                mobileMenuButton.addEventListener('click', function() {
+                    // Toggle menu visibility
+                    mobileMenu.classList.toggle('hidden');
+
+                    // Toggle icons
+                    hamburgerIcon.classList.toggle('hidden');
+                    closeIcon.classList.toggle('hidden');
+                });
+            }
         } catch (error) {
             console.error('Error loading navbar:', error);
         }

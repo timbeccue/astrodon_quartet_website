@@ -26,17 +26,73 @@
     <script src="components/components.js"></script>
 </head>
 <body class="font-sans text-gray-800">
-    <main class="max-w-7xl mx-auto px-8 py-12 min-h-[calc(100vh-100px)]">
-        <div class="max-w-2xl mx-auto">
-            <h1 class="text-4xl md:text-5xl font-semibold text-gray-900 mb-4 text-center">Get in Touch</h1>
-            <p class="text-lg text-gray-500 mb-8 text-center leading-relaxed">We'd love to hear from you. Send us a message and we'll respond as soon as possible.</p>
+    <style>
+        .hero-section {
+            position: relative;
+            height: 30vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
 
-            <div class="mb-12 text-center">
-                <p class="text-base text-gray-600 mb-2">Prefer to reach out via email?</p>
-                <a href="mailto:contact@astrodonquartet.com" class="text-lg font-medium text-gray-900 hover:text-gray-700 transition-colors">contact@astrodonquartet.com</a>
+        .hero-section img {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center 50%;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.5);
+        }
+
+        .hero-text {
+            position: relative;
+            z-index: 10;
+            text-align: center;
+            color: white;
+            padding: 0 2rem 2rem 2rem;
+            max-width: 1000px;
+            margin-top: 4rem;
+        }
+
+        .hero-text h1 {
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
+            font-weight: 700;
+            line-height: 1.2;
+            margin: 0 0 1rem 0;
+        }
+
+        .hero-text h2 {
+            font-size: clamp(1.25rem, 2.5vw, 1.875rem);
+            font-weight: 300;
+            line-height: 1.4;
+            margin: 0;
+        }
+    </style>
+
+    <main class="min-h-[calc(100vh-100px)]">
+        <!-- Hero Section -->
+        <div class="hero-section">
+            <img src="assets/images/contact-group-instruments.jpg" alt="Astrodon Quartet with instruments">
+            <div class="hero-overlay"></div>
+            <div class="hero-text">
+                <h1>We'd love to hear from you!</h1>
             </div>
+        </div>
 
-            <form action="https://api.web3forms.com/submit" method="POST" class="flex flex-col gap-6">
+        <!-- Contact Form Section -->
+        <div class="max-w-7xl mx-auto px-8 py-12">
+            <div class="flex flex-col lg:flex-row gap-8 lg:gap-16 max-w-6xl mx-auto">
+                <!-- Left Column: Contact Form -->
+                <div class="flex-1 lg:pr-8">
+                    <h2 class="text-2xl font-semibold text-gray-900 mb-6">Send us a message</h2>
+                    <form action="https://api.web3forms.com/submit" method="POST" class="flex flex-col gap-6">
                 <input type="hidden" name="access_key" value="cf456e02-9165-4d0b-b5b4-c55c5f5082fe">
                 <input type="hidden" name="subject" value="New Submission from Astrodon Quartet">
                 <input type="hidden" name="from_name" value="Astrodon Quartet Website">
@@ -57,8 +113,27 @@
                     <textarea id="message" name="message" rows="6" placeholder="Your message" required class="px-4 py-3.5 font-sans text-base text-gray-800 bg-white border border-gray-200 rounded resize-y min-h-[150px] transition-all focus:outline-none focus:border-gray-400 focus:ring-4 focus:ring-gray-400/10"></textarea>
                 </div>
 
-                <button type="submit" class="px-8 py-4 font-sans text-base font-medium text-white bg-gray-900 border-none rounded cursor-pointer transition-all hover:bg-gray-700 hover:-translate-y-0.5 active:translate-y-0 mt-4">Send Message</button>
-            </form>
+                        <button type="submit" class="px-8 py-4 font-sans text-base font-medium text-white bg-gray-900 border-none rounded cursor-pointer transition-all hover:bg-gray-700 hover:-translate-y-0.5 active:translate-y-0 mt-4">Send Message</button>
+                    </form>
+                </div>
+
+                <!-- Right Column: Contact Info -->
+                <div class="flex-1 lg:pl-8 lg:sticky lg:top-8 self-start">
+                    <div class="space-y-8">
+                        <!-- Email Section -->
+                        <div>
+                            <p class="text-base text-gray-600 mb-3">Prefer to reach out via email?</p>
+                            <a href="mailto:contact@astrodonquartet.com" class="text-xl font-medium text-gray-900 hover:text-gray-700 transition-colors break-words">contact@astrodonquartet.com</a>
+                        </div>
+
+                        <!-- Booking Info -->
+                        <div>
+                            <p class="text-sm font-medium text-gray-500 uppercase tracking-wider mb-2">For Booking Inquiries</p>
+                            <p class="text-base text-gray-700">Please include your event date, location, and type of performance you're interested in.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </main>
 </body>
