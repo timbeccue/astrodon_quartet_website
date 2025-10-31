@@ -19,40 +19,7 @@ async function loadConcerts() {
     }
 }
 
-// Sort concerts into upcoming and past based on current date/time
-function sortConcertsByDateTime(concerts) {
-    const now = new Date();
-    const upcoming = [];
-    const past = [];
-
-    concerts.forEach(concert => {
-        const concertDateTime = parseConcertDateTime(concert.date, concert.time);
-
-        if (concertDateTime >= now) {
-            upcoming.push(concert);
-        } else {
-            past.push(concert);
-        }
-    });
-
-    // Sort upcoming concerts chronologically (earliest first)
-    upcoming.sort((a, b) => {
-        const dateA = parseConcertDateTime(a.date, a.time);
-        const dateB = parseConcertDateTime(b.date, b.time);
-        return dateA - dateB;
-    });
-
-    // Sort past concerts reverse chronologically (most recent first)
-    past.sort((a, b) => {
-        const dateA = parseConcertDateTime(a.date, a.time);
-        const dateB = parseConcertDateTime(b.date, b.time);
-        return dateB - dateA;
-    });
-
-    return { upcoming, past };
-}
-
-// Note: parseConcertDateTime is now imported from utils.js
+// Note: sortConcertsByDateTime and parseConcertDateTime are now imported from utils.js
 
 // Display concerts in the specified container
 function displayConcerts(containerId, concerts) {

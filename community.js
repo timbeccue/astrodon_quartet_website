@@ -4,8 +4,14 @@ async function loadEvents() {
         const response = await fetch('assets/data/outreach-data.json');
         const data = await response.json();
 
-        displayEvents('upcoming-events', data.upcoming);
-        displayEvents('past-events', data.past);
+        // Get all events from concerts array
+        const allEvents = data.concerts || [];
+
+        // Sort events into upcoming and past based on current date/time
+        const { upcoming, past } = sortConcertsByDateTime(allEvents);
+
+        displayEvents('upcoming-events', upcoming);
+        displayEvents('past-events', past);
     } catch (error) {
         console.error('Error loading community events:', error);
         document.getElementById('upcoming-events').innerHTML = '<p class="text-center text-gray-400 p-8 italic">Error loading events data.</p>';

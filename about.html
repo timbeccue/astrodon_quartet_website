@@ -28,7 +28,7 @@
 <body class="font-sans text-gray-800">
     <main class="min-h-[calc(100vh-100px)]">
         <!-- About Section with Large Photo and Bio -->
-        <div class="max-w-7xl mx-auto px-8 py-12 lg:py-16">
+        <div id="about" class="max-w-7xl mx-auto px-8 py-12 lg:py-16">
             <div class="flex flex-col lg:flex-row-reversee items-stretch gap-8">
 
                 <!-- Large Photo Container - Full width on mobile, partial on desktop -->
@@ -465,18 +465,121 @@
 
         <!-- end individual bio section 1-->
 
+        <!-- Fellowship Section -->
+        <div id="fellowship" class="bg-gray-50">
+            <div class="max-w-7xl mx-auto px-8 py-16">
+                <h2 class="text-3xl md:text-4xl font-semibold text-gray-900 mb-8">Our Fellowship with Mount Vernon Virtuosi</h2>
+
+                <div class="flex flex-col lg:flex-row gap-12 items-center mb-12">
+                    <!-- Image Column -->
+                    <div class="lg:w-1/2">
+                        <img src="assets/images/media-page/mvv-shirts.webp"
+                             alt="Astrodon Quartet at Mars Music House"
+                             class="w-full rounded-lg shadow-lg">
+                    </div>
+
+                    <!-- Text Column -->
+                    <div class="lg:w-1/2 space-y-4 text-gray-600 leading-relaxed">
+                        <p>
+                            The Astrodon Quartet is the resident string quartet fellowship of Mount Vernon Virtuosi,
+                            a Baltimore nonprofit dedicated to free concerts and music education. Founded by cellist
+                            Amit Peled in 2018, MVV supports emerging professional musicians while serving communities
+                            throughout the city.
+                        </p>
+                        <p>
+                            As part of the fellowship, the quartet lives together in the Mars Music House, a space
+                            embedded in the community where they teach and perform. The music house is not just home,
+                            it is also a place where they teach lessons, conduct rehearsals, and perform house concerts.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Three Pillars - Visual Breakdown -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12">
+                    <div class="text-center">
+                        <div class="w-16 h-16 bg-gray-900 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19V6l12-3v13M9 19c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zm12-3c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zM9 10l12-3"/>
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-semibold text-gray-900 mb-2">Concerts</h3>
+                        <p class="text-gray-600">Sharing the beauty of chamber music through weekly performances with MVV's chamber orchestra and intimate string quartet concerts throughout Baltimore</p>
+                    </div>
+
+                    <div class="text-center">
+                        <div class="w-16 h-16 bg-gray-900 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/>
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-semibold text-gray-900 mb-2">Education</h3>
+                        <p class="text-gray-600">Providing free music instruction at Baltimore City public schools through MVV's "Every Child Deserves a Voice" program and fostering the next generation of musicians</p>
+                    </div>
+
+                    <div class="text-center">
+                        <div class="w-16 h-16 bg-gray-900 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/>
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-semibold text-gray-900 mb-2">Community</h3>
+                        <p class="text-gray-600">Bringing live chamber music to underserved communities, including senior centers, libraries, shelters, and neighborhood venues across the Baltimore region</p>
+                    </div>
+                </div>
+
+                <!-- MVV Link - Enhanced Call-to-Action -->
+                <div class="mt-16">
+                    <div class="flex flex-col md:flex-row items-center max-w-4xl mx-auto">
+                        <!-- Logo Section -->
+                        <div class="w-full md:w-1/2 p-8 flex items-right justify-end">
+                            <img src="assets/images/mvv-logo.webp" alt="Mount Vernon Virtuosi Logo" class="w-48 h-auto">
+                        </div>
+
+                        <!-- Text Section -->
+                        <div class="w-full md:w-1/2 p-8 text-center">
+                            <p class="text-gray-700 text-lg mb-4">
+                                Learn more about Mount Vernon Virtuosi
+                            </p>
+                            <a href="https://mountvernonvirtuosi.com"
+                               target="_blank"
+                               rel="noopener noreferrer"
+                               class="inline-flex items-center gap-2 text-gray-900 font-semibold text-xl hover:text-gray-600 transition-colors duration-200 group">
+                                <span class="border-b-2 border-transparent group-hover:border-gray-600 transition-all duration-200">
+                                    www.mountvernonvirtuosi.com
+                                </span>
+                                <svg xmlns="http://www.w3.org/2000/svg"
+                                     width="20"
+                                     height="20"
+                                     viewBox="0 0 24 24"
+                                     fill="none"
+                                     stroke="currentColor"
+                                     stroke-width="2"
+                                     stroke-linecap="round"
+                                     stroke-linejoin="round"
+                                     class="lucide lucide-external-link group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform duration-200">
+                                    <path d="M15 3h6v6"/>
+                                    <path d="M10 14 21 3"/>
+                                    <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <!-- Divider -->
         <div class="max-w-6xl mx-auto px-8 py-16">
             <hr class="border-t border-gray-300">
         </div>
 
         <!-- Individual Bios Section 2-->
-        <div class="max-w-7xl mx-auto px-8 py-16">
+        <div id="musicians" class="max-w-7xl mx-auto px-8 py-16">
             <!-- <h2 class="text-3xl md:text-4xl font-semibold text-gray-900 mb-12 text-center">Meet the Musicians</h2> -->
 
             <div class="space-y-32">
                 <!-- Member 1 -->
-                <div class="flex flex-col lg:flex-row gap-8">
+                <div id="dallas" class="flex flex-col lg:flex-row gap-8">
                     <div class="overflow-hidden rounded-lg border border-gray-200 flex-shrink-0 w-full lg:w-80">
                         <img src="assets/images/dallas-profile.webp" alt="First Violin" class="w-full h-full object-cover">
                     </div>
@@ -517,7 +620,7 @@
                 </div>
 
                 <!-- Member 2 -->
-                <div class="flex flex-col lg:flex-row-reverse gap-8">
+                <div id="zach" class="flex flex-col lg:flex-row-reverse gap-8">
                     <div class="overflow-hidden rounded-lg border border-gray-200 flex-shrink-0 w-full lg:w-80">
                         <img src="assets/images/zach-profile.webp" alt="Second Violin" class="w-full h-full object-cover">
                     </div>
@@ -554,7 +657,7 @@
                 </div>
 
                 <!-- Member 3 -->
-                <div class="flex flex-col lg:flex-row gap-8">
+                <div id="amelia" class="flex flex-col lg:flex-row gap-8">
                     <div class="overflow-hidden rounded-lg border border-gray-200 flex-shrink-0 w-full lg:w-80">
                         <img src="assets/images/amelia-profile.webp" alt="Viola" class="w-full h-full object-cover">
                     </div>
@@ -583,7 +686,7 @@
                 </div>
 
                 <!-- Member 4 -->
-                <div class="flex flex-col lg:flex-row-reverse gap-8">
+                <div id="tim" class="flex flex-col lg:flex-row-reverse gap-8">
                     <div class="overflow-hidden rounded-lg border border-gray-200 flex-shrink-0 w-full lg:w-80">
                         <img src="assets/images/tim-profile.webp" alt="Cello" class="w-full h-full object-cover">
                     </div>

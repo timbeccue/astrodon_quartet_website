@@ -53,3 +53,40 @@ function parseConcertDateTime(dateString, timeString) {
 
     return date;
 }
+
+/**
+ * Sort concerts/events into upcoming and past based on current date/time
+ * @param {Array} events - Array of event objects with date and optional time properties
+ * @returns {Object} Object with upcoming and past arrays
+ */
+function sortConcertsByDateTime(events) {
+    const now = new Date();
+    const upcoming = [];
+    const past = [];
+
+    events.forEach(event => {
+        const eventDateTime = parseConcertDateTime(event.date, event.time);
+
+        if (eventDateTime >= now) {
+            upcoming.push(event);
+        } else {
+            past.push(event);
+        }
+    });
+
+    // Sort upcoming events chronologically (earliest first)
+    upcoming.sort((a, b) => {
+        const dateA = parseConcertDateTime(a.date, a.time);
+        const dateB = parseConcertDateTime(b.date, b.time);
+        return dateA - dateB;
+    });
+
+    // Sort past events reverse chronologically (most recent first)
+    past.sort((a, b) => {
+        const dateA = parseConcertDateTime(a.date, a.time);
+        const dateB = parseConcertDateTime(b.date, b.time);
+        return dateB - dateA;
+    });
+
+    return { upcoming, past };
+}
