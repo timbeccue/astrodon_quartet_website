@@ -216,12 +216,47 @@
     <main class="min-h-[calc(100vh-100px)]">
 
         <!-- Debug Overlay -->
-        <!-- To show debug overlay: remove "display: none;" from the style below -->
-        <div id="debugOverlay" style="display: none; position: fixed; top: 100px; right: 20px; background: rgba(0,0,0,0.8); color: white; padding: 15px; font-family: monospace; font-size: 14px; z-index: 9999; border-radius: 5px;">
-            <div>Overall Progress: <span id="debugProgress">0</span>%</div>
-            <div>Transition Progress: <span id="debugTransition">0</span>%</div>
-            <div>Text Progress: <span id="debugText">0</span>%</div>
-            <div>Phase: <span id="debugPhase">-</span></div>
+        <div id="debugOverlay" hidden style="position: fixed; top: 100px; right: 20px; background: rgba(0,0,0,0.9); color: white; padding: 15px; font-family: monospace; font-size: 12px; z-index: 9999; border-radius: 8px; max-width: 300px;">
+            <div style="font-weight: bold; margin-bottom: 10px; border-bottom: 1px solid #444; padding-bottom: 5px;">Scroll Debug Panel</div>
+
+            <div style="margin-bottom: 10px;">
+                <div>Device Type: <span id="debugDeviceType">-</span></div>
+                <div>Container Height: <span id="debugContainerHeight">-</span>vh</div>
+            </div>
+
+            <div style="border-top: 1px solid #444; padding-top: 10px; margin-top: 10px;">
+                <div>Overall Progress: <span id="debugProgress">0</span>%</div>
+                <div>Transition Progress: <span id="debugTransition">0</span>%</div>
+                <div>Text Progress: <span id="debugText">0</span>%</div>
+                <div>Phase: <span id="debugPhase">-</span></div>
+            </div>
+
+            <div style="border-top: 1px solid #444; padding-top: 10px; margin-top: 10px;">
+                <div style="font-weight: bold; margin-bottom: 8px;">Configure Heights:</div>
+
+                <div style="margin-bottom: 8px;">
+                    <label style="display: block; font-size: 11px;">Mobile Touch:</label>
+                    <input type="range" id="mobileSlider" min="100" max="400" step="25" value="275" style="width: 100%;">
+                    <span id="mobileValue">275</span>vh
+                </div>
+
+                <div style="margin-bottom: 8px;">
+                    <label style="display: block; font-size: 11px;">Hybrid Laptop:</label>
+                    <input type="range" id="hybridSlider" min="100" max="400" step="25" value="275" style="width: 100%;">
+                    <span id="hybridValue">275</span>vh
+                </div>
+
+                <div style="margin-bottom: 8px;">
+                    <label style="display: block; font-size: 11px;">Desktop/Mouse:</label>
+                    <input type="range" id="desktopSlider" min="100" max="400" step="25" value="400" style="width: 100%;">
+                    <span id="desktopValue">400</span>vh
+                </div>
+
+                <div style="margin-top: 10px; display: flex; gap: 5px;">
+                    <button id="applyButton" style="flex: 1; padding: 5px; background: #4CAF50; border: none; color: white; border-radius: 4px; cursor: pointer; font-size: 11px;">Apply</button>
+                    <button id="resetButton" style="flex: 1; padding: 5px; background: #666; border: none; color: white; border-radius: 4px; cursor: pointer; font-size: 11px;">Reset</button>
+                </div>
+            </div>
         </div>
 
         <!-- Scroll Dissolve Section -->
@@ -292,6 +327,75 @@
         const topImage = document.getElementById('topImage');
         const textOverlay = document.getElementById('textOverlay');
         const darkOverlay = document.getElementById('darkOverlay');
+
+        // Device detection and scroll height configuration
+        let scrollHeights = {
+            mobile: 275,
+            hybrid: 275,
+            desktop: 400
+        };
+
+        function detectDeviceType() {
+            const hasTouch = ('ontouchstart' in window) || (navigator.maxTouchPoints > 0);
+            const isMobile = window.innerWidth < 768;
+
+            if (hasTouch && isMobile) {
+                return { type: 'mobile', height: scrollHeights.mobile, label: 'Mobile Touch' };
+            } else if (hasTouch && !isMobile) {
+                return { type: 'hybrid', height: scrollHeights.hybrid, label: 'Hybrid (Touch Laptop)' };
+            } else {
+                return { type: 'desktop', height: scrollHeights.desktop, label: 'Desktop/Mouse' };
+            }
+        }
+
+        function setContainerHeight(height) {
+            dissolveContainer.style.height = `${height}vh`;
+            document.getElementById('debugContainerHeight').textContent = height;
+        }
+
+        // Initialize device detection and set height
+        const deviceInfo = detectDeviceType();
+        document.getElementById('debugDeviceType').textContent = deviceInfo.label;
+        setContainerHeight(deviceInfo.height);
+
+        // Wire up sliders to update value displays
+        document.getElementById('mobileSlider').addEventListener('input', (e) => {
+            document.getElementById('mobileValue').textContent = e.target.value;
+        });
+        document.getElementById('hybridSlider').addEventListener('input', (e) => {
+            document.getElementById('hybridValue').textContent = e.target.value;
+        });
+        document.getElementById('desktopSlider').addEventListener('input', (e) => {
+            document.getElementById('desktopValue').textContent = e.target.value;
+        });
+
+        // Apply button: Update scroll heights and re-detect
+        document.getElementById('applyButton').addEventListener('click', () => {
+            scrollHeights.mobile = parseInt(document.getElementById('mobileSlider').value);
+            scrollHeights.hybrid = parseInt(document.getElementById('hybridSlider').value);
+            scrollHeights.desktop = parseInt(document.getElementById('desktopSlider').value);
+
+            const newDeviceInfo = detectDeviceType();
+            setContainerHeight(newDeviceInfo.height);
+        });
+
+        // Reset button: Restore defaults
+        document.getElementById('resetButton').addEventListener('click', () => {
+            scrollHeights.mobile = 275;
+            scrollHeights.hybrid = 275;
+            scrollHeights.desktop = 400;
+
+            document.getElementById('mobileSlider').value = 275;
+            document.getElementById('hybridSlider').value = 275;
+            document.getElementById('desktopSlider').value = 400;
+
+            document.getElementById('mobileValue').textContent = 275;
+            document.getElementById('hybridValue').textContent = 275;
+            document.getElementById('desktopValue').textContent = 400;
+
+            const newDeviceInfo = detectDeviceType();
+            setContainerHeight(newDeviceInfo.height);
+        });
 
         function handleScroll() {
             const containerRect = dissolveContainer.getBoundingClientRect();
