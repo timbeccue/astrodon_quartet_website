@@ -1,3 +1,64 @@
+// Gallery images data
+const galleryImages = [
+    {
+        src: 'assets/images/community-page/amelia-demonstration.webp',
+        fullSize: 'assets/images/community-page/jpgs/amelia-demonstration.jpeg',
+        alt: 'Amelia showing students what her sheet music looks like',
+        caption: 'Amelia showing students what her sheet music looks like'
+    },
+    {
+        src: 'assets/images/community-page/foodnotbombs.webp',
+        fullSize: 'assets/images/community-page/jpgs/foodnotbombs.jpeg',
+        alt: 'Dallas and Tim preparing meals at FoodNotBombs',
+        caption: 'Dallas and Tim preparing meals at FoodNotBombs'
+    },
+    {
+        src: 'assets/images/community-page/greeting-students.webp',
+        fullSize: 'assets/images/community-page/jpgs/greeting-students.jpeg',
+        alt: 'Talking to students after a school concert',
+        caption: 'Talking to students after a school concert'
+    },
+    {
+        src: 'assets/images/community-page/learning-notes.webp',
+        fullSize: 'assets/images/community-page/jpgs/learning-notes.jpeg',
+        alt: 'Students learning to read music notation',
+        caption: 'Students learning to read music notation'
+    },
+    {
+        src: 'assets/images/community-page/post-performance.webp',
+        fullSize: 'assets/images/community-page/jpgs/post-performance.jpeg',
+        alt: 'Post-performance hang with students',
+        caption: 'Post-performance hang with students'
+    },
+    {
+        src: 'assets/images/community-page/practice-logs.webp',
+        fullSize: 'assets/images/community-page/jpgs/practice-logs.jpeg',
+        alt: 'Students showing off their practice logs',
+        caption: 'Students showing off their practice logs'
+    },
+    {
+        src: 'assets/images/community-page/recital-prep.webp',
+        fullSize: 'assets/images/community-page/jpgs/recital-prep.jpeg',
+        alt: 'Mental prep before our students first recital',
+        caption: 'Mental prep before our students\' first recital'
+    }
+];
+
+// Render the photo gallery
+function renderGallery() {
+    const galleryContainer = document.getElementById('photo-gallery');
+    if (!galleryContainer) return;
+
+    galleryContainer.innerHTML = galleryImages.map(image => `
+        <div class="flex flex-col">
+            <div class="overflow-hidden rounded-lg cursor-pointer hover:opacity-90 transition-opacity aspect-square" onclick="openLightbox('${image.fullSize}')">
+                <img src="${image.src}" alt="${image.alt}" class="w-full h-full object-cover">
+            </div>
+            <p class="text-sm text-gray-600 mt-2 px-1">${image.caption}</p>
+        </div>
+    `).join('');
+}
+
 // Load community events data and initialize the page
 async function loadEvents() {
     try {
@@ -82,6 +143,7 @@ function switchTab(tabName) {
 
 // Initialize event listeners
 document.addEventListener('DOMContentLoaded', () => {
+    renderGallery();
     loadEvents();
 
     // Add click handlers to tab buttons
