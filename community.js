@@ -2,43 +2,43 @@
 const galleryImages = [
     {
         src: 'assets/images/community-page/amelia-demonstration.webp',
-        fullSize: 'assets/images/community-page/jpgs/amelia-demonstration.jpeg',
+        fullSize: 'assets/images/community-page/amelia-demonstration.webp',
         alt: 'Amelia showing students what her sheet music looks like',
         caption: 'Amelia showing students what her sheet music looks like'
     },
     {
         src: 'assets/images/community-page/foodnotbombs.webp',
-        fullSize: 'assets/images/community-page/jpgs/foodnotbombs.jpeg',
+        fullSize: 'assets/images/community-page/foodnotbombs.webp',
         alt: 'Dallas and Tim preparing meals at FoodNotBombs',
         caption: 'Dallas and Tim preparing meals at FoodNotBombs'
     },
     {
         src: 'assets/images/community-page/greeting-students.webp',
-        fullSize: 'assets/images/community-page/jpgs/greeting-students.jpeg',
+        fullSize: 'assets/images/community-page/greeting-students.webp',
         alt: 'Talking to students after a school concert',
         caption: 'Talking to students after a school concert'
     },
     {
         src: 'assets/images/community-page/learning-notes.webp',
-        fullSize: 'assets/images/community-page/jpgs/learning-notes.jpeg',
+        fullSize: 'assets/images/community-page/learning-notes.webp',
         alt: 'Students learning to read music notation',
         caption: 'Students learning to read music notation'
     },
     {
         src: 'assets/images/community-page/post-performance.webp',
-        fullSize: 'assets/images/community-page/jpgs/post-performance.jpeg',
+        fullSize: 'assets/images/community-page/post-performance.webp',
         alt: 'Post-performance hang with students',
         caption: 'Post-performance hang with students'
     },
     {
         src: 'assets/images/community-page/practice-logs.webp',
-        fullSize: 'assets/images/community-page/jpgs/practice-logs.jpeg',
+        fullSize: 'assets/images/community-page/practice-logs.webp',
         alt: 'Students showing off their practice logs',
         caption: 'Students showing off their practice logs'
     },
     {
         src: 'assets/images/community-page/recital-prep.webp',
-        fullSize: 'assets/images/community-page/jpgs/recital-prep.jpeg',
+        fullSize: 'assets/images/community-page/recital-prep.webp',
         alt: 'Mental prep before our students first recital',
         caption: 'Mental prep before our students\' first recital'
     }
