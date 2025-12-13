@@ -48,6 +48,19 @@
             <img src="assets/images/media-page/formal-graffiti.webp" alt="Astrodon Quartet" class="w-full h-auto aspect-[3/2] object-cover">
         </div>
 
+        <!-- Testimonials Section -->
+        <div class="hidden w-full bg-white py-10 mb-8 md:mb-12 pt-4" id="testimonials-section">
+            <div class="max-w-4xl mx-auto text-center">
+                <div class="relative flex items-center justify-center py-4" id="quotes-container">
+                    <!-- Quote slides will be dynamically loaded here -->
+                </div>
+                <!-- Navigation (dots or arrows+counter) -->
+                <div class="flex justify-center items-center gap-3 mt-6" id="navigation-container">
+                    <!-- Navigation will be dynamically loaded here -->
+                </div>
+            </div>
+        </div>
+
         <!-- Tabs Navigation -->
         <div class="mb-8">
             <div class="flex border-b-2 border-gray-200">
@@ -80,6 +93,14 @@
     </main>
 
     <style>
+        /* Testimonials section styles */
+        .quote-slide {
+            pointer-events: none;
+        }
+        .quote-slide.active {
+            pointer-events: auto;
+        }
+
         /* Tab styling */
         .tab-button {
             color: #6b7280;
@@ -129,5 +150,210 @@
 
     <script src="utils.js"></script>
     <script src="concerts.js"></script>
+    <script>
+        // Load and display testimonials carousel
+        fetch('assets/data/quotes-data.json')
+            .then(response => response.json())
+            .then(data => {
+                const quotesData = data.quotes || [];
+
+                if (quotesData.length === 0) {
+                    console.warn('No quotes found in quotes-data.json');
+                    return;
+                }
+
+                const quotesContainer = document.getElementById('quotes-container');
+                const navigationContainer = document.getElementById('navigation-container');
+                const quoteCount = quotesData.length;
+                const USE_DOTS_THRESHOLD = 7;
+
+                // Build quote slides
+                quotesData.forEach((quote, index) => {
+                    const quoteDiv = document.createElement('div');
+                    quoteDiv.className = `quote-slide ${index === 0 ? 'active' : ''} absolute inset-0 flex items-center justify-center ${index === 0 ? 'opacity-100' : 'opacity-0'} transition-opacity duration-700`;
+                    quoteDiv.setAttribute('data-quote', index);
+
+                    const blockquote = document.createElement('blockquote');
+                    blockquote.className = 'text-xl md:text-2xl lg:text-3xl text-gray-900 font-light leading-relaxed italic';
+                    blockquote.textContent = `"${quote.text}"`;
+
+                    quoteDiv.appendChild(blockquote);
+                    quotesContainer.appendChild(quoteDiv);
+                });
+
+                // Build navigation based on quote count
+                if (quoteCount <= USE_DOTS_THRESHOLD) {
+                    // Use dots for 7 or fewer quotes
+                    quotesData.forEach((quote, index) => {
+                        const dot = document.createElement('button');
+                        dot.className = `quote-dot w-3 h-3 rounded-full bg-gray-900 transition-opacity duration-300 ${index === 0 ? '' : 'opacity-40 hover:opacity-60'}`;
+                        dot.setAttribute('data-quote', index);
+                        dot.setAttribute('aria-label', `View quote ${index + 1}`);
+                        navigationContainer.appendChild(dot);
+                    });
+                } else {
+                    // Use arrows + counter for more than 7 quotes
+                    // Previous button
+                    const prevButton = document.createElement('button');
+                    prevButton.id = 'quote-prev';
+                    prevButton.className = 'p-2 text-gray-900 hover:text-gray-600 transition-colors';
+                    prevButton.setAttribute('aria-label', 'Previous quote');
+                    prevButton.innerHTML = '<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>';
+
+                    // Counter
+                    const counter = document.createElement('span');
+                    counter.id = 'quote-counter';
+                    counter.className = 'text-gray-900 font-medium min-w-[60px] text-center';
+                    counter.textContent = `1 / ${quoteCount}`;
+
+                    // Next button
+                    const nextButton = document.createElement('button');
+                    nextButton.id = 'quote-next';
+                    nextButton.className = 'p-2 text-gray-900 hover:text-gray-600 transition-colors';
+                    nextButton.setAttribute('aria-label', 'Next quote');
+                    nextButton.innerHTML = '<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>';
+
+                    navigationContainer.appendChild(prevButton);
+                    navigationContainer.appendChild(counter);
+                    navigationContainer.appendChild(nextButton);
+                }
+
+                // Initialize carousel functionality
+                initializeCarousel(quoteCount);
+            })
+            .catch(error => console.error('Error loading quotes data:', error));
+
+        function initializeCarousel(quoteCount) {
+            const quotes = document.querySelectorAll('.quote-slide');
+            const dots = document.querySelectorAll('.quote-dot');
+            const prevButton = document.getElementById('quote-prev');
+            const nextButton = document.getElementById('quote-next');
+            const counter = document.getElementById('quote-counter');
+            const usingDots = dots.length > 0;
+
+            let currentQuote = 0;
+            let autoRotateInterval = null;
+            const AUTO_ROTATE_DELAY = 6000;
+
+            // Touch/swipe handling
+            let touchStartX = 0;
+            let touchStartY = 0;
+            let touchEndX = 0;
+            let touchEndY = 0;
+            const MIN_SWIPE_DISTANCE = 50;
+
+            function showQuote(index) {
+                quotes.forEach(quote => {
+                    quote.style.opacity = '0';
+                    quote.classList.remove('active');
+                });
+
+                // Update dots if using dots navigation
+                if (usingDots) {
+                    dots.forEach(dot => {
+                        dot.style.opacity = '0.4';
+                    });
+                    dots[index].style.opacity = '1';
+                }
+
+                // Update counter if using arrow navigation
+                if (counter) {
+                    counter.textContent = `${index + 1} / ${quoteCount}`;
+                }
+
+                quotes[index].style.opacity = '1';
+                quotes[index].classList.add('active');
+                currentQuote = index;
+            }
+
+            function nextQuote() {
+                const next = (currentQuote + 1) % quotes.length;
+                showQuote(next);
+            }
+
+            function prevQuote() {
+                const prev = (currentQuote - 1 + quotes.length) % quotes.length;
+                showQuote(prev);
+            }
+
+            function startAutoRotate() {
+                stopAutoRotate();
+                autoRotateInterval = setInterval(nextQuote, AUTO_ROTATE_DELAY);
+            }
+
+            function stopAutoRotate() {
+                if (autoRotateInterval) {
+                    clearInterval(autoRotateInterval);
+                    autoRotateInterval = null;
+                }
+            }
+
+            // Click handlers for dots (if using dots navigation)
+            if (usingDots) {
+                dots.forEach((dot, index) => {
+                    dot.addEventListener('click', function(e) {
+                        e.preventDefault();
+                        showQuote(index);
+                        startAutoRotate();
+                    });
+                });
+            }
+
+            // Click handlers for arrow buttons (if using arrow navigation)
+            if (prevButton && nextButton) {
+                prevButton.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    prevQuote();
+                    startAutoRotate();
+                });
+
+                nextButton.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    nextQuote();
+                    startAutoRotate();
+                });
+            }
+
+            const testimonialSection = document.getElementById('testimonials-section');
+
+            if (testimonialSection) {
+                // Pause on hover
+                testimonialSection.addEventListener('mouseenter', stopAutoRotate);
+                testimonialSection.addEventListener('mouseleave', startAutoRotate);
+
+                // Touch event handlers for swipe
+                testimonialSection.addEventListener('touchstart', function(e) {
+                    touchStartX = e.changedTouches[0].screenX;
+                    touchStartY = e.changedTouches[0].screenY;
+                }, { passive: true });
+
+                testimonialSection.addEventListener('touchend', function(e) {
+                    touchEndX = e.changedTouches[0].screenX;
+                    touchEndY = e.changedTouches[0].screenY;
+                    handleSwipe();
+                }, { passive: true });
+            }
+
+            function handleSwipe() {
+                const deltaX = touchEndX - touchStartX;
+                const deltaY = touchEndY - touchStartY;
+
+                // Check if horizontal swipe is dominant
+                if (Math.abs(deltaX) > Math.abs(deltaY) && Math.abs(deltaX) > MIN_SWIPE_DISTANCE) {
+                    if (deltaX > 0) {
+                        // Swipe right - go to previous
+                        prevQuote();
+                    } else {
+                        // Swipe left - go to next
+                        nextQuote();
+                    }
+                    startAutoRotate();
+                }
+            }
+
+            // Start auto-rotation
+            startAutoRotate();
+        }
+    </script>
 </body>
 </html>
