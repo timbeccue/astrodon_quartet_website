@@ -111,9 +111,9 @@
     },
     {
       "name": "Calidore String Quartet Seminar",
-      "date": "2026-01-19",
-      "time": "TBA",
-      "location": "University of Delaware"
+      "date": "2026-01-18",
+      "time": "7:00 PM",
+      "location": "Gore Recital Hall, University of Delaware"
     },
     {
       "name": "Chamber Masterworks of Eastern Europe",
@@ -123,11 +123,18 @@
       "google-maps": "https://maps.app.goo.gl/RN92ZwwitAbzw27C7"
     },
     {
-      "name": "House Concert",
+      "name": "House Concert Series - Letters from the Afterlife",
       "date": "2026-02-07",
-      "time": "TBA",
+      "time": "7:00 PM",
       "location": "Baltimore, MD",
       "note": "Contact us for tickets"
+    },
+    {
+      "name": "LAMP String Quartet Academy Performance",
+      "date": "2026-03-21",
+      "time": "7:00 PM",
+      "location": "Lunenberg Academy of Music Performance",
+      "google-maps": "https://maps.app.goo.gl/fLJYx9KJCVNHwKrQ6"
     },
     {
       "name": "Music, Gettysburg!",
@@ -137,25 +144,11 @@
       "info": "https://www.musicgettysburg.org/concerts/mt-vernon-virtuosi"
     },
     {
-      "name": "Mount Vernon Virtuosi - Made in Maryland",
-      "date": "2026-05-22",
-      "time": "12:00 PM",
-      "location": "Enoch Pratt Free Library, Baltimore, MD",
-      "google-maps": "https://maps.app.goo.gl/ThwSnb4dEQme5H1R8?g_st=ipc"
-    },
-    {
-      "name": "Mount Vernon Virtuosi - Made in Maryland",
-      "date": "2026-05-23",
-      "time": "7:00 PM",
-      "location": "Emmanuel Episcopal Church, Baltimore, MD",
-      "google-maps": "https://maps.app.goo.gl/qven5hKSZEAUzoEu7?g_st=ipc"
-    },
-    {
-      "name": "Mount Vernon Virtuosi - Made in Maryland",
-      "date": "2026-05-24",
+      "name": "Roland Park Place",
+      "date": "2026-05-03",
       "time": "3:00 PM",
-      "location": "St. Ann Catholic Church, Washington, DC",
-      "google-maps": "https://maps.app.goo.gl/nBX97yBbutvFAxff6?g_st=ipc"
+      "location": "Roland Park Place",
+      "google-maps": "https://maps.app.goo.gl/x7ZQQ6L7PRtneeUJ8"
     }
   ]
 }
