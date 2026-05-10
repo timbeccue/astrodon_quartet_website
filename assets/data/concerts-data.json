@@ -149,6 +149,20 @@
       "time": "3:00 PM",
       "location": "Roland Park Place",
       "google-maps": "https://maps.app.goo.gl/x7ZQQ6L7PRtneeUJ8"
+    },
+    {
+      "name": "House Concert Series - Epitomes: Past and Present",
+      "date": "2026-05-10",
+      "time": "7:30 PM",
+      "location": "Baltimore, MD",
+      "note": "Contact us for tickets"
+    },
+    {
+      "name": "Too Many Notes Chamber Series",
+      "date": "2026-06-05",
+      "time": "7:30 PM",
+      "location": "Cockeysville, MD",
+      "note": "Contact us for tickets"
     }
   ]
 }
