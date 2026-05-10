@@ -95,13 +95,27 @@
                     if (typeof lucide !== 'undefined') {
                         lucide.createIcons();
                     }
+
+                    if (typeof window.updateDissolveLayout === 'function') {
+                        window.updateDissolveLayout();
+                    }
                 } else {
                     document.getElementById('next-concert').innerHTML = `
                         <p class="text-xl text-gray-500 italic">No upcoming concerts scheduled at this time.</p>
                     `;
+
+                    if (typeof window.updateDissolveLayout === 'function') {
+                        window.updateDissolveLayout();
+                    }
                 }
             })
-            .catch(error => console.error('Error loading concert data:', error));
+            .catch(error => {
+                console.error('Error loading concert data:', error);
+
+                if (typeof window.updateDissolveLayout === 'function') {
+                    window.updateDissolveLayout();
+                }
+            });
     </script>
 </head>
 <body class="font-sans text-gray-800">
@@ -109,11 +123,13 @@
         /* Prevent overscroll bouncing */
         html, body {
             overscroll-behavior-y: none;
+            background: #ffffff;
         }
 
         .dissolve-container {
             height: 400vh;
             position: relative;
+            background: #ffffff;
         }
 
         .dissolve-sticky {
@@ -165,7 +181,7 @@
         .image-top {
             background-image: url('assets/images/plainwalls.webp');
             opacity: 1;
-            transition: opacity 0.1s ease-out;
+            transition: none;
         }
 
         .text-overlay {
@@ -178,7 +194,7 @@
             width: 90%;
             max-width: 1000px;
             opacity: 0;
-            transition: opacity 0.3s ease-out;
+            transition: none;
         }
 
         .text-overlay h1 {
@@ -208,7 +224,7 @@
             height: 100%;
             background: rgba(0, 0, 0, 0.4);
             opacity: 0;
-            transition: opacity 0.3s ease-out;
+            transition: none;
             z-index: 5;
         }
     </style>
@@ -328,6 +344,11 @@
         const topImage = document.getElementById('topImage');
         const textOverlay = document.getElementById('textOverlay');
         const darkOverlay = document.getElementById('darkOverlay');
+        const dissolveStart = 0;
+        const dissolveEnd = 0.75;
+        const textStart = 0.25;
+        const textEnd = 0.55;
+        const stickyReleaseBuffer = 8;
 
         // Device detection and scroll height configuration
         let scrollHeights = {
@@ -350,14 +371,29 @@
         }
 
         function setContainerHeight(height) {
-            dissolveContainer.style.height = `${height}vh`;
-            document.getElementById('debugContainerHeight').textContent = height;
+            const requestedHeightPx = (height / 100) * window.innerHeight;
+            const stickyHeight = dissolveSticky.offsetHeight;
+            const navbarHeight = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--navbar-height')) || 0;
+            const minimumHeightPx = Math.ceil(
+                (stickyHeight + navbarHeight - (dissolveEnd * window.innerHeight)) / (1 - dissolveEnd)
+            ) + stickyReleaseBuffer;
+            const finalHeightPx = Math.max(requestedHeightPx, minimumHeightPx, window.innerHeight + 1);
+
+            dissolveContainer.style.height = `${finalHeightPx}px`;
+            document.getElementById('debugContainerHeight').textContent = Math.round((finalHeightPx / window.innerHeight) * 100);
+            handleScroll();
         }
 
+        function updateDissolveLayout() {
+            const newDeviceInfo = detectDeviceType();
+            document.getElementById('debugDeviceType').textContent = newDeviceInfo.label;
+            setContainerHeight(newDeviceInfo.height);
+        }
+
+        window.updateDissolveLayout = updateDissolveLayout;
+
         // Initialize device detection and set height
-        const deviceInfo = detectDeviceType();
-        document.getElementById('debugDeviceType').textContent = deviceInfo.label;
-        setContainerHeight(deviceInfo.height);
+        updateDissolveLayout();
 
         // Wire up sliders to update value displays
         document.getElementById('mobileSlider').addEventListener('input', (e) => {
@@ -376,8 +412,7 @@
             scrollHeights.hybrid = parseInt(document.getElementById('hybridSlider').value);
             scrollHeights.desktop = parseInt(document.getElementById('desktopSlider').value);
 
-            const newDeviceInfo = detectDeviceType();
-            setContainerHeight(newDeviceInfo.height);
+            updateDissolveLayout();
         });
 
         // Reset button: Restore defaults
@@ -394,8 +429,7 @@
             document.getElementById('hybridValue').textContent = 275;
             document.getElementById('desktopValue').textContent = 400;
 
-            const newDeviceInfo = detectDeviceType();
-            setContainerHeight(newDeviceInfo.height);
+            updateDissolveLayout();
         });
 
         function handleScroll() {
@@ -403,12 +437,6 @@
             const containerTop = containerRect.top;
             const containerHeight = containerRect.height;
             const windowHeight = window.innerHeight;
-
-            // Transition timing points (adjust these values to control when each transition occurs)
-            const dissolveStart = 0;      // When image dissolve begins (0%)
-            const dissolveEnd = 0.75;     // When image dissolve completes (35%)
-            const textStart = 0.25;       // When text fade begins (25% - overlaps with dissolve!)
-            const textEnd = 0.55;         // When text fade completes (45%)
 
             // Calculate overall progress through the dissolve section (0 to 1)
             const progress = Math.max(0, Math.min(1, -containerTop / (containerHeight - windowHeight)));
@@ -466,6 +494,7 @@
             if (navbar) {
                 const height = navbar.offsetHeight;
                 document.documentElement.style.setProperty('--navbar-height', `${height}px`);
+                updateDissolveLayout();
             }
         }
 
@@ -474,7 +503,15 @@
         setTimeout(setNavbarHeight, 50);
 
         // Update on window resize
-        window.addEventListener('resize', setNavbarHeight);
+        window.addEventListener('resize', () => {
+            setNavbarHeight();
+            updateDissolveLayout();
+        });
+        window.addEventListener('load', updateDissolveLayout);
+
+        if (document.fonts && typeof document.fonts.ready === 'object') {
+            document.fonts.ready.then(updateDissolveLayout);
+        }
     </script>
 </body>
 </html>
