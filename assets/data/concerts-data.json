@@ -34,16 +34,18 @@
       "google-maps": "https://maps.app.goo.gl/nBX97yBbutvFAxff6?g_st=ipc"
     },
     {
-      "name": "Mount Vernon Virtuosi Music House Chamber Concerts - *Special guest Alex Fiterstein, Clarinet",
+      "name": "Mount Vernon Virtuosi Music House Chamber Concerts",
       "date": "2025-10-13",
       "time": "6:00 PM",
-      "location": "Baltimore, MD"
+      "location": "Baltimore, MD",
+      "note": "Astrodon Quartet with Alex Fiterstein, clarinet"
     },
     {
-      "name": "Kenwood Chamber Music Series - *Special guest Alex Fiterstein, Clarinet",
+      "name": "Kenwood Chamber Music Series",
       "date": "2025-10-14",
       "time": "7:30 PM",
-      "location": "Washington, DC"
+      "location": "Washington, DC",
+      "note": "Astrodon Quartet with Alex Fiterstein, clarinet"
     },
     {
       "name": "Pratt Library/Walthers Museum - Drawn to Music",
@@ -155,14 +157,87 @@
       "date": "2026-05-09",
       "time": "7:30 PM",
       "location": "Baltimore, MD",
-      "note": "Contact us for tickets"
+      "note": "Contact us for event details!"
     },
     {
       "name": "Too Many Notes Chamber Series",
       "date": "2026-06-05",
       "time": "7:30 PM",
       "location": "Cockeysville, MD",
-      "note": "Contact us for tickets"
+      "program": [
+        {
+          "composer": "Wolfgang Amadeus Mozart"
+        },
+        {
+          "composer": "Jerod Impichchaachaaha' Tate"
+        },
+        {
+          "composer": "Franz Schubert"
+        }
+      ],
+      "note": "Contact us for event details!"
+    },
+    {
+      "name": "Redfish Music Festival",
+      "date": "2026-07-29",
+      "time": "7:00 PM",
+      "location": "Trinity Lutheran Church, 1200 Easy Street, Brookings, OR",
+      "program": [
+        {
+          "composer": "Franz Schubert"
+        }
+      ]
+    },
+    {
+      "name": "Redfish Music Festival",
+      "date": "2026-07-30",
+      "time": "7:00 PM",
+      "location": "Curry Public Library, 94341 3rd St, Gold Beach, OR",
+      "program": [
+        {
+          "composer": "Wolfgang Amadeus Mozart"
+        },
+        {
+          "composer": "Dinuk Wijeratne"
+        }
+      ]
+    },
+    {
+      "name": "Redfish Music Festival",
+      "date": "2026-07-31",
+      "time": "7:00 PM",
+      "location": "First Presbyterian Church, 592 Edison Ave SW, Bandon, OR",
+      "program": [
+        {
+          "composer": "Robert Schumann"
+        }
+      ]
+    },
+    {
+      "name": "Redfish Music Festival",
+      "date": "2026-08-01",
+      "time": "7:00 PM",
+      "location": "First Presbyterian Church, 2238 Pony Creek Rd, North Bend, OR",
+      "program": [
+        {
+          "composer": "Wolfgang Amadeus Mozart"
+        },
+        {
+          "composer": "Robert Schumann"
+        }
+      ],
+      "note": "Co-sponsored by OCMA. Astrodon Quartet with Genevieve Feiwen Lee, piano"
+    },
+    {
+      "name": "Redfish Music Festival",
+      "date": "2026-08-02",
+      "time": "7:00 PM",
+      "location": "The Cheese Factory, 94179 Allen Boice Dr, Langlois, OR",
+      "program": [
+        {
+          "composer": "Franz Schubert"
+        }
+      ]
     }
   ]
 }
