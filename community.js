@@ -7,12 +7,6 @@ const galleryImages = [
         caption: 'Amelia showing students what her sheet music looks like'
     },
     {
-        src: 'assets/images/community-page/foodnotbombs.webp',
-        fullSize: 'assets/images/community-page/foodnotbombs.webp',
-        alt: 'Dallas and Tim preparing meals at FoodNotBombs',
-        caption: 'Dallas and Tim preparing meals at FoodNotBombs'
-    },
-    {
         src: 'assets/images/community-page/greeting-students.webp',
         fullSize: 'assets/images/community-page/greeting-students.webp',
         alt: 'Talking to students after a school concert',
