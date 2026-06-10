@@ -1,0 +1,11 @@
+{
+  "name": "astrodon-quartet-website",
+  "private": true,
+  "description": "Astrodon Quartet website. Run `npm run build:css` after changing any Tailwind classes in HTML/JS files.",
+  "scripts": {
+    "build:css": "tailwindcss -i ./assets/css/tailwind-input.css -o ./assets/css/styles.css --minify"
+  },
+  "devDependencies": {
+    "tailwindcss": "^3.4.0"
+  }
+}

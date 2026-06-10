@@ -12,6 +12,9 @@ async function loadConcerts() {
 
         displayConcerts('upcoming-concerts', upcoming);
         displayConcerts('past-concerts', past);
+
+        // Add MusicEvent structured data for search engines (from utils.js)
+        injectConcertSchema(upcoming);
     } catch (error) {
         console.error('Error loading concerts:', error);
         document.getElementById('upcoming-concerts').innerHTML = '<p class="text-center text-gray-400 p-8 italic">Error loading concerts data.</p>';

@@ -55,6 +55,69 @@ function parseConcertDateTime(dateString, timeString) {
 }
 
 /**
+ * Inject MusicEvent structured data (JSON-LD) for upcoming concerts so
+ * search engines can show them in event listings
+ * @param {Array} upcomingConcerts - Array of upcoming concert objects
+ */
+function injectConcertSchema(upcomingConcerts) {
+    if (!upcomingConcerts || upcomingConcerts.length === 0) {
+        return;
+    }
+
+    const performer = {
+        '@type': 'MusicGroup',
+        'name': 'Astrodon Quartet',
+        'url': 'https://www.astrodonquartet.com/'
+    };
+
+    const events = upcomingConcerts.map(concert => {
+        // Build ISO 8601 startDate; omitted timezone is read as the venue's local time
+        let startDate = concert.date;
+        const timeMatch = concert.time ? concert.time.match(/(\d{1,2}):(\d{2})\s*(AM|PM)/i) : null;
+        if (timeMatch) {
+            let hours = parseInt(timeMatch[1]);
+            const minutes = timeMatch[2];
+            const meridiem = timeMatch[3].toUpperCase();
+            if (meridiem === 'PM' && hours !== 12) {
+                hours += 12;
+            } else if (meridiem === 'AM' && hours === 12) {
+                hours = 0;
+            }
+            startDate += `T${String(hours).padStart(2, '0')}:${minutes}:00`;
+        }
+
+        const event = {
+            '@type': 'MusicEvent',
+            'name': concert.name,
+            'startDate': startDate,
+            'eventStatus': 'https://schema.org/EventScheduled',
+            'eventAttendanceMode': 'https://schema.org/OfflineEventAttendanceMode',
+            'location': {
+                '@type': 'Place',
+                'name': concert.location,
+                'address': concert.location
+            },
+            'performer': performer,
+            'organizer': performer
+        };
+
+        if (concert.info) {
+            event.url = concert.info;
+        }
+
+        return event;
+    });
+
+    const script = document.createElement('script');
+    script.type = 'application/ld+json';
+    script.textContent = JSON.stringify({
+        '@context': 'https://schema.org',
+        '@graph': events
+    });
+    document.head.appendChild(script);
+}
+
+/**
  * Sort concerts/events into upcoming and past based on current date/time
  * @param {Array} events - Array of event objects with date and optional time properties
  * @returns {Object} Object with upcoming and past arrays

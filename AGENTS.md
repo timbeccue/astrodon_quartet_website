@@ -50,13 +50,13 @@ Then open `http://localhost:8000`.
 
 ```
 /
-├── index.html             # Homepage: hero animation, next concert, testimonials
+├── index.html             # Homepage: hero animation, next concert
 ├── about.html             # Quartet + individual bios, MVV fellowship info
 ├── concerts.html          # Full concert calendar + audience testimonials
 ├── community.html         # Outreach and education activities
 ├── media.html             # Photo gallery, press materials, videos
 ├── contact.html           # Contact form / booking info
-├── utils.js               # Shared: formatDate, parseConcertDateTime, sortConcertsByDateTime
+├── utils.js               # Shared: formatDate, parseConcertDateTime, sortConcertsByDateTime, injectConcertSchema
 ├── concerts.js            # Concerts page: filter/sort/render logic
 ├── community.js           # Community page: filter/sort/render logic
 ├── tailwind.config.js     # Tailwind content paths + font config
@@ -142,6 +142,10 @@ Device detection: `('ontouchstart' in window) || (navigator.maxTouchPoints > 0)`
 Every page follows this head structure:
 
 ```html
+<title>Page Name | Astrodon Quartet</title>
+<meta name="description" content="...">
+<link rel="canonical" href="https://www.astrodonquartet.com/<page>">
+<!-- Open Graph + Twitter blocks (same title/description, www extensionless URLs) -->
 <link rel="stylesheet" href="assets/css/styles.css">
 <!-- Google Fonts (Manrope + Fugaz One) -->
 <script src="https://unpkg.com/lucide@latest"></script>
@@ -149,21 +153,29 @@ Every page follows this head structure:
 <!-- page-specific scripts -->
 ```
 
+**Canonical URL rule**: always `https://www.astrodonquartet.com/<page>` — www host, no `.html` extension (Cloudflare Pages redirects the apex domain and `.html` URLs to this form). Applies to canonicals, og:url, twitter:url, and `sitemap.xml`. When adding a page, add it to `sitemap.xml`.
+
+### SEO Structured Data (JSON-LD)
+
+- **MusicGroup**: static `<script type="application/ld+json">` block duplicated in the heads of `index.html` and `about.html` (members, socials, location). If member info changes, update both.
+- **MusicEvent**: generated at runtime from `concerts-data.json` by `injectConcertSchema(upcoming)` in `utils.js` — called by `concerts.js` and the homepage's inline next-concert script. Stays in sync automatically when concert data changes.
+
 ---
 
 ## Content Notes
 
 - **Fellowship**: Individual bios on `about.html` reference Mount Vernon Virtuosi (MVV) fellowship. The fellowship section was removed from `index.html` homepage as of commit `67404be`.
-- **Concert data**: Schedule through ~May 2026 as of last update.
-- **Testimonials**: Audience quotes in `quotes-data.json`, displayed on concerts page.
-- **Open Graph / Twitter Card**: Meta tags implemented on all pages; cover image at `assets/images/site-preview.jpg`.
-- **Structured data**: JSON-LD schema on homepage for search engines.
+- **Concert data**: Schedule through ~August 2026 as of last update.
+- **Testimonials**: Audience quotes in `quotes-data.json`, displayed on concerts page (currently hidden via `hidden` class).
+- **Open Graph / Twitter Card**: Meta tags + meta description + canonical on all pages; cover image at `assets/images/site-preview.jpg`. See "HTML Page Template" above.
+- **Structured data**: See "SEO Structured Data (JSON-LD)" above.
 
 ---
 
 ## Deployment
 
-- Host: Cloudflare Pages
-- Build command: `npm run build:css` (must run before deploying if classes changed)
-- Node version: 22 (from nvm path)
+- Host: Cloudflare Pages — **no build step configured there**; the site deploys as-is
+- CSS is built locally with `npm run build:css` and the compiled `assets/css/styles.css` is committed
+- Node version: 22 (use the nvm path, e.g. `~/.nvm/versions/node/v22.8.0/bin`; the default shell Node is v14)
 - No server-side code; purely static
+- SEO files: `sitemap.xml` + `robots.txt` in the deploy root; submit sitemap via Google Search Console after domain changes

@@ -3,38 +3,59 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Astrodon Quartet - Home</title>
+    <title>Astrodon Quartet | Baltimore String Quartet</title>
+    <meta name="description" content="The Astrodon Quartet is a professional string quartet in Baltimore, MD performing chamber music concerts and free community programs. Available for weddings and private events.">
+    <link rel="canonical" href="https://www.astrodonquartet.com/">
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://astrodonquartet.com/">
-    <meta property="og:title" content="Astrodon Quartet - Baltimore String Quartet">
-    <meta property="og:description" content="Professional string quartet in Baltimore, MD, performing concerts and teaching music throughout the community.">
-    <meta property="og:image" content="https://astrodonquartet.com/assets/images/site-preview.jpg">
+    <meta property="og:url" content="https://www.astrodonquartet.com/">
+    <meta property="og:title" content="Astrodon Quartet | Baltimore String Quartet">
+    <meta property="og:description" content="The Astrodon Quartet is a professional string quartet in Baltimore, MD performing chamber music concerts and free community programs. Available for weddings and private events.">
+    <meta property="og:image" content="https://www.astrodonquartet.com/assets/images/site-preview.jpg">
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://astrodonquartet.com/">
-    <meta property="twitter:title" content="Astrodon Quartet - Baltimore String Quartet">
-    <meta property="twitter:description" content="Professional string quartet in Baltimore, MD, performing concerts and teaching music throughout the community.">
-    <meta property="twitter:image" content="https://astrodonquartet.com/assets/images/site-preview.jpg">
+    <meta property="twitter:url" content="https://www.astrodonquartet.com/">
+    <meta property="twitter:title" content="Astrodon Quartet | Baltimore String Quartet">
+    <meta property="twitter:description" content="The Astrodon Quartet is a professional string quartet in Baltimore, MD performing chamber music concerts and free community programs. Available for weddings and private events.">
+    <meta property="twitter:image" content="https://www.astrodonquartet.com/assets/images/site-preview.jpg">
 
     <link rel="apple-touch-icon" sizes="180x180" href="assets/favicon/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon/favicon-16x16.png">
     <link rel="manifest" href="assets/favicon/site.webmanifest">
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    fontFamily: {
-                        sans: ['Manrope', 'sans-serif'],
-                    },
-                }
-            }
-        }
+
+    <!-- Structured data for search engines -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "MusicGroup",
+        "name": "Astrodon Quartet",
+        "url": "https://www.astrodonquartet.com/",
+        "image": "https://www.astrodonquartet.com/assets/images/site-preview.jpg",
+        "genre": ["Classical", "Chamber Music"],
+        "description": "The Astrodon Quartet is a professional string quartet based in Baltimore, Maryland, performing chamber music concerts and free community programs throughout the Baltimore-DC region. Available for weddings and private events.",
+        "email": "contact@astrodonquartet.com",
+        "foundingLocation": {
+            "@type": "Place",
+            "name": "Baltimore, MD"
+        },
+        "areaServed": ["Baltimore, MD", "Washington, DC"],
+        "member": [
+            { "@type": "Person", "name": "Dallas Noble", "jobTitle": "Violinist" },
+            { "@type": "Person", "name": "Zach Levin", "jobTitle": "Violinist" },
+            { "@type": "Person", "name": "Amelia Eckloff", "jobTitle": "Violist" },
+            { "@type": "Person", "name": "Tim Beccue", "jobTitle": "Cellist" }
+        ],
+        "sameAs": [
+            "https://www.youtube.com/@AstrodonQuartet",
+            "https://www.facebook.com/profile.php?id=61584197550118",
+            "https://www.instagram.com/astrodonquartet"
+        ]
+    }
     </script>
+    <link rel="stylesheet" href="assets/css/styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700&family=Fugaz+One&display=swap" rel="stylesheet">
@@ -57,6 +78,9 @@
                         const dateB = parseConcertDateTime(b.date, b.time);
                         return dateA - dateB;
                     });
+
+                // Add MusicEvent structured data for search engines (from utils.js)
+                injectConcertSchema(upcomingConcerts);
 
                 if (upcomingConcerts.length > 0) {
                     const nextConcert = upcomingConcerts[0];
