@@ -56,6 +56,14 @@ function createConcertCard(concert) {
         ? `<div class="mt-2 text-sm text-gray-500 italic">${concert.note}</div>`
         : '';
 
+    // Create partner HTML - partnership credit with optional logo
+    const partnerHTML = concert.partner
+        ? `<div class="flex items-center gap-2 mt-2">
+                ${concert.partner.logo ? `<img src="${concert.partner.logo}" alt="" class="w-10 h-10 object-contain flex-shrink-0">` : ''}
+                <span class="text-sm text-gray-500 italic">${concert.partner.text}</span>
+            </div>`
+        : '';
+
     return `
         <div class="bg-white border border-gray-200 rounded-lg p-5 mb-3 hover:border-gray-400 transition-all">
             <div class="text-2xl font-bold text-gray-900 mb-1">${formattedDate}</div>
@@ -68,6 +76,7 @@ function createConcertCard(concert) {
                 </div>
                 ${programHTML}
                 ${noteHTML}
+                ${partnerHTML}
                 ${infoButtonHTML}
             </div>
         </div>

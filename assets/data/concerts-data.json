@@ -183,6 +183,10 @@
       "time": "5:15 PM",
       "location": "Faulkner Gallery, Central Library, Santa Barbara, CA",
       "note": "Free and open to the public — no RSVP required",
+      "partner": {
+        "text": "Presented in partnership with the Santa Barbara Public Library",
+        "logo": "assets/images/sbpl-logo.webp"
+      },
       "info": "https://calendar.library.santabarbaraca.gov/event/free-public-concert-astrodon-string-quartet-31052"
     },
     {
