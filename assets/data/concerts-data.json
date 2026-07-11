@@ -73,6 +73,7 @@
       "date": "2025-11-22",
       "time": "7:30 PM",
       "location": "Cockeysville, MD",
+      "admission": "tickets",
       "note": "Contact us for tickets"
     },
     {
@@ -129,6 +130,7 @@
       "date": "2026-02-07",
       "time": "7:00 PM",
       "location": "Baltimore, MD",
+      "admission": "tickets",
       "note": "Contact us for tickets"
     },
     {
@@ -182,6 +184,7 @@
       "date": "2026-07-23",
       "time": "5:15 PM",
       "location": "Faulkner Gallery, Central Library, Santa Barbara, CA",
+      "admission": "free",
       "note": "Free and open to the public — no RSVP required",
       "partner": {
         "text": "Presented in partnership with the Santa Barbara Public Library",
@@ -194,6 +197,7 @@
       "date": "2026-07-24",
       "time": "7:00 PM",
       "location": "Santa Barbara, CA",
+      "admission": "rsvp",
       "note": "Contact us if interested in attending"
     },
     {
@@ -263,6 +267,13 @@
           "composer": "Franz Schubert"
         }
       ]
+    },
+    {
+      "name": "Astrodon Quartet Recital",
+      "date": "2026-11-08",
+      "time": "4:30 PM",
+      "location": "Grusin Music Hall, University of Colorado Boulder",
+      "google-maps": "https://www.google.com/maps/search/?api=1&query=Grusin+Music+Hall%2C+1020+18th+St%2C+Boulder%2C+CO+80302"
     }
   ]
 }

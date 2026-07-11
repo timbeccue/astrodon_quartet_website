@@ -97,11 +97,22 @@ Both use the key `"concerts"` (not `"events"`):
       "location": "Venue, City, ST",
       "google-maps": "https://...", // optional
       "info": "https://...",        // optional
-      "note": "Special note"        // optional
+      "note": "Special note",       // optional
+      "admission": "free",          // optional: "free" | "tickets" | "rsvp" — renders a badge on the concert card; "free" also sets isAccessibleForFree in JSON-LD
+      "description": "1-2 sentences about the event",  // optional
+      "program": [                  // optional
+        { "composer": "Franz Schubert", "work": "Death and the Maiden" }  // "work" optional; if any item has one, program renders as a list instead of an inline composer row
+      ],
+      "partner": {                  // optional partnership credit
+        "text": "Presented in partnership with ...",
+        "logo": "assets/images/partner-logo.webp"  // optional
+      }
     }
   ]
 }
 ```
+
+On the concerts page, upcoming events are grouped under month headings and the soonest one renders as a highlighted "Next Concert" card at the top. Each upcoming concert card also gets an "Add to calendar" icon button (top-right, next to the admission badge) that opens a small dropdown with a Google Calendar link and an .ics data-URI download, generated client-side in `concerts.js` from the date/time/location fields using floating (venue-local) times.
 
 ### quotes-data.json
 

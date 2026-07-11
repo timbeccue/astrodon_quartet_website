@@ -4,14 +4,14 @@
  * Format a date string (YYYY-MM-DD) for display
  * Parses date components to avoid UTC timezone issues
  * @param {string} dateString - Date in YYYY-MM-DD format
- * @returns {string} Formatted date string (e.g., "November 10, 2025")
+ * @returns {string} Formatted date string (e.g., "Monday, November 10, 2025")
  */
 function formatDate(dateString) {
     // Parse the date components to avoid UTC timezone issues
     const [year, month, day] = dateString.split('-').map(Number);
     // Create date in local timezone (month is 0-indexed)
     const date = new Date(year, month - 1, day);
-    const options = { year: 'numeric', month: 'long', day: 'numeric' };
+    const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
     return date.toLocaleDateString('en-US', options);
 }
 
@@ -103,6 +103,10 @@ function injectConcertSchema(upcomingConcerts) {
 
         if (concert.info) {
             event.url = concert.info;
+        }
+
+        if (concert.admission === 'free') {
+            event.isAccessibleForFree = true;
         }
 
         return event;
