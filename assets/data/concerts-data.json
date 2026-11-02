@@ -305,6 +305,55 @@
       "location": "Grusin Music Hall, University of Colorado Boulder",
       "google-maps": "https://www.google.com/maps/search/?api=1&query=Grusin+Music+Hall%2C+1020+18th+St%2C+Boulder%2C+CO+80302",
       "info": "https://cupresents.org/show-details/graduate-string-quartet-recital-in-residence-astrodon-quartet-fall-recital"
+    },
+    {
+      "name": "Faculty Tuesdays - The Music of Jessie Montgomery",
+      "date": "2026-12-01",
+      "time": "7:30 PM",
+      "admission": "free",
+      "location": "Grusin Music Hall, University of Colorado Boulder",
+      "google-maps": "https://www.google.com/maps/search/?api=1&query=Grusin+Music+Hall%2C+1020+18th+St%2C+Boulder%2C+CO+80302",
+      "info": "https://cupresents.org/show-details/faculty-tuesdays-alex-gonzalez-violin",
+      "program": [
+        {
+          "composer": "Jessie Montgomery",
+          "work": "Strum"
+        }
+      ],
+      "note": "Astrodon Quartet joins CU Boulder faculty and guests for Strum"
+    },
+    {
+      "name": "CU Boulder SoundWorks",
+      "date": "2027-02-10",
+      "time": "7:30 PM",
+      "admission": "free",
+      "location": "Grusin Music Hall, University of Colorado Boulder",
+      "google-maps": "https://www.google.com/maps/search/?api=1&query=Grusin+Music+Hall%2C+1020+18th+St%2C+Boulder%2C+CO+80302",
+      "info": "https://cupresents.org/show-details/cu-boulder-soundworks-first-spring-2027-concert"
+    },
+    {
+      "name": "Astrodon Quartet Recital",
+      "featured": true,
+      "date": "2027-02-27",
+      "time": "7:30 PM",
+      "admission": "free",
+      "location": "Grusin Music Hall, University of Colorado Boulder",
+      "google-maps": "https://www.google.com/maps/search/?api=1&query=Grusin+Music+Hall%2C+1020+18th+St%2C+Boulder%2C+CO+80302",
+      "info": "https://cupresents.org/show-details/graduate-string-quartet-recital-astrodon-string-quartet-0227",
+      "program": [
+        {
+          "composer": "Antonín Dvořák",
+          "work": "String Quartet No. 12 in F major, Op. 96, \"American\""
+        },
+        {
+          "composer": "Kevin Lau",
+          "work": "The Train to Improbable Places"
+        },
+        {
+          "composer": "Johannes Brahms",
+          "work": "String Quartet No. 3 in B-flat major, Op. 67"
+        }
+      ]
     }
   ]
 }
