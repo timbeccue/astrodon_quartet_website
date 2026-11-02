@@ -50,7 +50,7 @@ Then open `http://localhost:8000`.
 
 ```
 /
-├── index.html             # Homepage: hero animation, next concert
+├── index.html             # Homepage: hero animation, featured concert
 ├── about.html             # Quartet + individual bios, MVV fellowship info
 ├── concerts.html          # Full concert calendar + audience testimonials
 ├── community.html         # Outreach and education activities
@@ -99,6 +99,7 @@ Both use the key `"concerts"` (not `"events"`):
       "info": "https://...",        // optional
       "note": "Special note",       // optional
       "admission": "free",          // optional: "free" | "tickets" | "rsvp" — renders a badge on the concert card; "free" also sets isAccessibleForFree in JSON-LD
+      "featured": true,             // optional: homepage shows the soonest upcoming featured concert, or the soonest overall if none are flagged; no effect in outreach-data.json
       "description": "1-2 sentences about the event",  // optional
       "program": [                  // optional
         { "composer": "Franz Schubert", "work": "Death and the Maiden" }  // "work" optional; if any item has one, program renders as a list instead of an inline composer row
@@ -173,7 +174,7 @@ Every page follows this head structure:
 ### SEO Structured Data (JSON-LD)
 
 - **MusicGroup**: static `<script type="application/ld+json">` block duplicated in the heads of `index.html` and `about.html` (members, socials, location). If member info changes, update both.
-- **MusicEvent**: generated at runtime from `concerts-data.json` by `injectConcertSchema(upcoming)` in `utils.js` — called by `concerts.js` and the homepage's inline next-concert script. Stays in sync automatically when concert data changes.
+- **MusicEvent**: generated at runtime from `concerts-data.json` by `injectConcertSchema(upcoming)` in `utils.js` — called by `concerts.js` and the homepage's inline concert script. Stays in sync automatically when concert data changes.
 
 ---
 
