@@ -169,7 +169,7 @@ Every page follows this head structure:
 
 ### Email Signup (Kit)
 
-`concerts.html` embeds the Kit form inline with a one-line script (`data-uid="c8c41a4f69"`). The footer's "Join our mailing list" link opens the same form in a `<dialog>` modal, with `components.js` loading Kit's script on first open; on pages where the form is already inline, the link scrolls to it instead, so Kit's script never runs twice on a page. The form's text, colors, and custom CSS are all managed in Kit, and edits there appear on the site without a code change. Subscribers are stored in Kit.
+`concerts.html` embeds the Kit form inline with a one-line script (`data-uid="c8c41a4f69"`). The footer's "Join our mailing list" link opens the same form in a `<dialog>` modal, with `components.js` loading Kit's script on first open; on pages where the form is already inline, the link scrolls to it and blinks an outline around it instead, so Kit's script never runs twice on a page. The form's text, colors, and custom CSS are all managed in Kit, and edits there appear on the site without a code change. Subscribers are stored in Kit.
 
 ### SEO Structured Data (JSON-LD)
 

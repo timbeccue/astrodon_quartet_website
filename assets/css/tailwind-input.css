@@ -12,3 +12,18 @@
     background-color: #fff;
   }
 }
+
+@layer components {
+  /* Blinks around the inline signup form when the footer link is clicked */
+  .signup-highlight {
+    outline: 2px solid transparent;
+    outline-offset: 6px;
+    animation: signup-highlight 1.2s ease-in-out;
+  }
+
+  @keyframes signup-highlight {
+    50% {
+      outline-color: #6b7280;
+    }
+  }
+}

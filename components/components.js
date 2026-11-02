@@ -77,11 +77,15 @@
         }
 
         link.addEventListener('click', function() {
-            // Pages that already show the form inline just jump to it
+            // Pages that already show the form inline jump to it and blink an outline around it
             const inlineForm = document.querySelector(`main [data-uid="${uid}"]`);
             if (inlineForm) {
                 inlineForm.scrollIntoView({ block: 'center' });
                 inlineForm.querySelector('input[type="email"], input[name="email_address"]')?.focus();
+                // Removing the class and forcing a reflow restarts the animation on repeat clicks
+                inlineForm.classList.remove('signup-highlight');
+                void inlineForm.offsetWidth;
+                inlineForm.classList.add('signup-highlight');
                 return;
             }
 
