@@ -113,7 +113,7 @@ Both use the key `"concerts"` (not `"events"`):
 }
 ```
 
-On the concerts page, upcoming events are grouped under month headings and the soonest one renders as a highlighted "Next Concert" card at the top. Each upcoming concert card also gets an "Add to calendar" icon button (top-right, next to the admission badge) that opens a small dropdown with a Google Calendar link and an .ics data-URI download, generated client-side in `concerts.js` from the date/time/location fields using floating (venue-local) times.
+On the concerts page, each card shows a compact date block (month / day / weekday) beside the concert name. Upcoming events are a flat list with the soonest one rendered as a highlighted "Next Concert" card at the top; past events are grouped under month headings. When a concert has `info`, the whole card opens that link in a new tab through an "Event details" link whose `::after` stretches over the card; other controls in the card sit above it with `relative z-10`. Cards without `info` have no hover effect. Each upcoming concert card also gets an "Add to calendar" button that opens a small dropdown with a Google Calendar link and an .ics data-URI download, generated client-side in `concerts.js` from the date/time/location fields using floating (venue-local) times.
 
 ### quotes-data.json
 
