@@ -298,6 +298,7 @@
     },
     {
       "name": "Astrodon Quartet Recital",
+      "featured": true,
       "date": "2026-11-08",
       "time": "4:30 PM",
       "admission": "free",
