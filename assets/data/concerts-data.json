@@ -283,6 +283,22 @@
       ]
     },
     {
+      "name": "Private House Concert",
+      "date": "2026-11-01",
+      "time": "4:30 PM",
+      "location": "Private venue",
+      "program": [
+        {
+          "composer": "Joseph Haydn",
+          "work": "String Quartet in B minor, Op. 33, No. 1"
+        },
+        {
+          "composer": "Ludwig van Beethoven",
+          "work": "String Quartet in C major, Op. 59, No. 3"
+        }
+      ]
+    },
+    {
       "name": "CU Boulder SoundWorks",
       "date": "2026-11-06",
       "time": "7:30 PM",
