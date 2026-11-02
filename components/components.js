@@ -52,9 +52,55 @@
             const response = await fetch('components/footer.html');
             const html = await response.text();
             document.body.insertAdjacentHTML('beforeend', html);
+            setupSignupModal();
         } catch (error) {
             console.error('Error loading footer:', error);
         }
+    }
+
+    // Footer "Join our mailing list" link: opens the Kit signup form in a modal
+    function setupSignupModal() {
+        const uid = 'c8c41a4f69';
+        const link = document.getElementById('signup-link');
+        const dialog = document.getElementById('signup-dialog');
+        const content = document.getElementById('signup-content');
+
+        function loadForm() {
+            const script = document.createElement('script');
+            script.async = true;
+            script.dataset.uid = uid;
+            script.src = `https://astrodon-quartet.kit.com/${uid}/index.js`;
+            script.onerror = function() {
+                content.innerHTML = '<p class="p-8 pr-12 text-gray-600">The signup form couldn\'t load. Please email us at <a href="mailto:contact@astrodonquartet.com" class="underline">contact@astrodonquartet.com</a> and we\'ll add you to the list.</p>';
+            };
+            content.replaceChildren(script);
+        }
+
+        link.addEventListener('click', function() {
+            // Pages that already show the form inline just jump to it
+            const inlineForm = document.querySelector(`main [data-uid="${uid}"]`);
+            if (inlineForm) {
+                inlineForm.scrollIntoView({ block: 'center' });
+                inlineForm.querySelector('input[type="email"], input[name="email_address"]')?.focus();
+                return;
+            }
+
+            if (!content.querySelector(`[data-uid="${uid}"]`)) {
+                loadForm();
+            }
+            dialog.showModal();
+        });
+
+        document.getElementById('signup-close').addEventListener('click', function() {
+            dialog.close();
+        });
+
+        // Clicking the backdrop closes the modal
+        dialog.addEventListener('click', function(event) {
+            if (event.target === dialog) {
+                dialog.close();
+            }
+        });
     }
 
     // Load components when DOM is ready
